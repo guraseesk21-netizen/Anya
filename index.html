@@ -17,31 +17,31 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      background: #ffebee; /* Rosa chiaro tinta unita */
+      background: #ffebee;
       padding: 10px;
       position: relative;
       overflow: hidden;
     }
 
-    /* Sticker Arachide sparsi sullo sfondo (Molti di più) */
+    /* Sticker Arachide sparsi sullo sfondo (ingranditi e resi ben visibili) */
     .bg-peanut {
       position: absolute;
-      width: 48px;
+      width: 65px !important;
       height: auto;
-      opacity: 0.28;
+      opacity: 0.45;
       pointer-events: none;
-      z-index: 0;
+      z-index: 1;
     }
-    .p-1  { top: 3%; left: 5%; transform: rotate(-15deg); }
-    .p-2  { top: 8%; right: 6%; transform: rotate(25deg); }
-    .p-3  { top: 25%; left: 80%; transform: rotate(-35deg); }
-    .p-4  { top: 38%; left: 4%; transform: rotate(45deg); }
-    .p-5  { top: 55%; right: 5%; transform: rotate(-15deg); }
-    .p-6  { bottom: 28%; left: 6%; transform: rotate(20deg); }
-    .p-7  { bottom: 15%; right: 8%; transform: rotate(-30deg); }
-    .p-8  { bottom: 4%; left: 10%; transform: rotate(15deg); }
-    .p-9  { bottom: 3%; right: 25%; transform: rotate(-40deg); }
-    .p-10 { top: 18%; left: 12%; transform: rotate(30deg); }
+    .p-1  { top: 2%; left: 3%; transform: rotate(-15deg); }
+    .p-2  { top: 5%; right: 4%; transform: rotate(25deg); }
+    .p-3  { top: 22%; right: 2%; transform: rotate(-35deg); }
+    .p-4  { top: 35%; left: 2%; transform: rotate(45deg); }
+    .p-5  { top: 52%; right: 3%; transform: rotate(-15deg); }
+    .p-6  { bottom: 25%; left: 3%; transform: rotate(20deg); }
+    .p-7  { bottom: 12%; right: 4%; transform: rotate(-30deg); }
+    .p-8  { bottom: 2%; left: 8%; transform: rotate(15deg); }
+    .p-9  { bottom: 2%; right: 20%; transform: rotate(-40deg); }
+    .p-10 { top: 15%; left: 5%; transform: rotate(30deg); }
 
     /* Container Principale */
     .game-card {
@@ -49,7 +49,7 @@
       z-index: 10;
       background: transparent;
       width: 100%;
-      max-width: 390px;
+      max-width: 420px;
       min-height: 85vh;
       padding: 5px;
       display: flex;
@@ -58,30 +58,37 @@
       justify-content: space-between;
     }
 
-    /* Pulsante Musica Audio */
+    /* Pulsante Musica GRAFICO ROSA (niente emoji) */
     .music-btn {
       position: absolute;
       top: 0px;
       right: 5px;
       z-index: 20;
-      background: #fff;
-      border: 2px solid #ffccd5;
-      border-radius: 50%;
-      width: 40px;
-      height: 40px;
-      font-size: 1.2rem;
+      background: #ffb6c1;
+      color: #ffffff;
+      border: 2px solid #ff85a2;
+      border-radius: 20px;
+      padding: 6px 14px;
+      font-size: 0.8rem;
+      font-weight: bold;
       cursor: pointer;
       display: flex;
       justify-content: center;
       align-items: center;
-      box-shadow: 0 3px 8px rgba(220, 120, 150, 0.15);
+      box-shadow: 0 3px 8px rgba(255, 133, 162, 0.3);
+      transition: all 0.2s ease;
     }
 
-    /* Header Logo ENORME e Centrato */
+    .music-btn:hover {
+      background: #ff9ebb;
+      transform: scale(1.05);
+    }
+
+    /* Header Logo GIGANTE */
     .header-logo {
       width: 100%;
       text-align: center;
-      margin-top: 10px;
+      margin-top: 15px;
       margin-bottom: 5px;
       display: flex;
       justify-content: center;
@@ -89,11 +96,13 @@
     }
 
     .header-logo img.logo-img {
-      width: 98%;
-      max-width: 360px;
-      max-height: 200px;
+      width: 100% !important;
+      max-width: 380px !important;
+      height: auto !important;
+      max-height: 220px !important;
       object-fit: contain;
       background: transparent;
+      transform: scale(1.15); /* Forza ingrandimento visivo */
     }
 
     /* Pagine */
@@ -111,18 +120,18 @@
       display: flex;
     }
 
-    /* Anya Vestita da Arachide (Schermata Principale) */
+    /* Anya Vestita da Arachide */
     .anya-peanut-hero {
-      width: 175px;
+      width: 185px;
       height: auto;
       object-fit: contain;
       margin: 15px 0;
       background: transparent;
     }
 
-    /* Tasto Play Grafico e Pulsanti Chiari */
+    /* Tasti Rosa Chiaro Luminoso */
     .play-btn-img {
-      width: 145px;
+      width: 150px;
       cursor: pointer;
       transition: transform 0.2s ease;
       margin-top: 10px;
@@ -134,20 +143,20 @@
     }
 
     .play-btn-fallback {
-      background: #ff85a2;
+      background: #ff9ebb !important; /* Rosa chiaro luminoso */
       color: white;
-      border: none;
+      border: 2px solid #ff85a2;
       padding: 14px 40px;
       font-size: 1.2rem;
       font-weight: bold;
       border-radius: 30px;
       cursor: pointer;
-      box-shadow: 0 5px 15px rgba(255, 133, 162, 0.4);
-      transition: background 0.2s;
+      box-shadow: 0 5px 15px rgba(255, 158, 187, 0.4);
+      transition: all 0.2s;
     }
 
     .play-btn-fallback:hover {
-      background: #ff9ebb;
+      background: #ffb6c1 !important;
     }
 
     /* Schermata INTRO */
@@ -197,19 +206,19 @@
       transform: translateY(-2px);
     }
 
-    /* Anya in Basso a Sinistra (INGRANDITA) + Fumetto Staccato */
+    /* Anya in Basso a Sinistra ENORME */
     .dialogue-wrapper {
       display: flex;
       align-items: flex-end;
-      gap: 10px;
+      gap: 8px;
       width: 100%;
       margin-top: 5px;
     }
 
-    /* Anya Molto più grande che parla */
+    /* Anya gigante */
     .anya-avatar-standalone {
-      width: 130px;
-      height: 130px;
+      width: 160px !important;
+      height: 160px !important;
       object-fit: contain;
       background: transparent;
       flex-shrink: 0;
@@ -220,8 +229,8 @@
       background: #ffffff;
       border: 2px solid #ffccd5;
       border-radius: 18px;
-      padding: 14px 16px;
-      font-size: 0.88rem;
+      padding: 12px 14px;
+      font-size: 0.85rem;
       color: #444;
       text-align: left;
       line-height: 1.35;
@@ -256,7 +265,6 @@
       z-index: 0;
     }
 
-    /* Immagini Risposta Corretta / Sbagliata */
     .feedback-img {
       width: 180px;
       height: auto;
@@ -277,7 +285,7 @@
 </head>
 <body>
 
-  <!-- Molti più Sticker Arachide Sparsi nello Sfondo -->
+  <!-- Sticker Arachide Ben Visibili e Sparsi -->
   <img src="Arachide.png" class="bg-peanut p-1" alt="Arachide BG">
   <img src="Arachide.png" class="bg-peanut p-2" alt="Arachide BG">
   <img src="Arachide.png" class="bg-peanut p-3" alt="Arachide BG">
@@ -291,22 +299,19 @@
 
   <div class="game-card">
 
-    <!-- Tasto Musica -->
-    <button class="music-btn" onclick="toggleAudio()">🎵</button>
+    <!-- Pulsante Musica Rosa Senza Emoji -->
+    <button class="music-btn" id="music-toggle-btn" onclick="toggleAudio()">AUDIO</button>
 
-    <!-- Header Logo Molto Grande e Centrato -->
+    <!-- Header Logo Enorme -->
     <div class="header-logo">
       <img src="logo.png" class="logo-img" alt="Logo" onerror="this.style.display='none'; document.getElementById('alt-title').style.display='block';">
-      <h1 id="alt-title" style="display:none; color:#ff85a2; font-size:2.5rem;">Anya's Quiz 🥜</h1>
+      <h1 id="alt-title" style="display:none; color:#ff85a2; font-size:2.8rem;">Anya's Quiz</h1>
     </div>
 
     <!-- ================= SCHERMATA 1: START ================= -->
     <div id="screen-start" class="screen active">
-      
-      <!-- Anya Vestita da Arachide al Centro -->
       <img src="Anya_aracidi.png" class="anya-peanut-hero" alt="Anya Arachide">
 
-      <!-- Tasto Play -->
       <img src="play_button.png" class="play-btn-img" alt="Play" onclick="startIntro()" onerror="this.style.display='none'; document.getElementById('fallback-play').style.display='block';">
       <button id="fallback-play" class="play-btn-fallback" style="display:none; margin-top:15px;" onclick="startIntro()">PLAY ▶</button>
     </div>
@@ -325,7 +330,6 @@
     <!-- ================= SCHERMATA 3: DOMANDE ================= -->
     <div id="screen-quiz" class="screen">
       
-      <!-- Risposte A B C D -->
       <div class="answers-grid">
         <button class="answer-btn" onclick="checkAnswer(0)">A: <span id="opt-0"></span></button>
         <button class="answer-btn" onclick="checkAnswer(1)">B: <span id="opt-1"></span></button>
@@ -333,9 +337,9 @@
         <button class="answer-btn" onclick="checkAnswer(3)">D: <span id="opt-3"></span></button>
       </div>
 
-      <!-- Anya Ingrandita in Basso a Sinistra + Fumetto Staccato -->
+      <!-- Anya ENORME in Basso a Sinistra (160px) -->
       <div class="dialogue-wrapper">
-        <img id="anya-expression" src="anya_talking.png" class="anya-avatar-standalone" alt="Anya" onerror="this.src='https://via.placeholder.com/130/ffb6c1/ffffff?text=Anya'">
+        <img id="anya-expression" src="anya_talking.png" class="anya-avatar-standalone" alt="Anya" onerror="this.src='https://via.placeholder.com/160/ffb6c1/ffffff?text=Anya'">
         <div class="speech-bubble-standalone" id="question-text">
           Caricamento...
         </div>
@@ -442,14 +446,19 @@
     let currentQuestion = 0;
     let isMusicPlaying = false;
     const bgMusic = document.getElementById('bg-music');
+    const musicBtn = document.getElementById('music-toggle-btn');
 
     function toggleAudio() {
       if (isMusicPlaying) {
         bgMusic.pause();
         isMusicPlaying = false;
+        musicBtn.textContent = "AUDIO OFF";
+        musicBtn.style.background = "#ffb6c1";
       } else {
         bgMusic.play().catch(() => {});
         isMusicPlaying = true;
+        musicBtn.textContent = "AUDIO ON";
+        musicBtn.style.background = "#ff85a2";
       }
     }
 
