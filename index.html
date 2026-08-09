@@ -18,8 +18,8 @@
       justify-content: center;
       align-items: center;
       background: url('0a2bf83cc0d4041dd33ebb5c83ed8666.jpg') repeat center center;
-      background-size: 260px;
-      padding: 20px;
+      background-size: 200px;
+      padding: 30px 15px;
       overflow-x: hidden;
       position: relative;
     }
@@ -29,66 +29,68 @@
       content: '';
       position: absolute;
       top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(255, 240, 245, 0.4);
+      background: rgba(255, 240, 245, 0.45);
       z-index: 0;
     }
 
-    /* Card del Player Musicale */
+    /* Card del Player Musicale - Dimensioni Ridotte */
     .player-card {
       position: relative;
       z-index: 10;
-      background: rgba(255, 255, 255, 0.92);
+      background: rgba(255, 255, 255, 0.94);
       backdrop-filter: blur(10px);
       width: 100%;
-      max-width: 360px;
-      border-radius: 30px;
-      padding: 25px;
-      box-shadow: 0 15px 35px rgba(220, 120, 150, 0.25),
-                  0 0 0 4px #fff,
-                  0 0 0 8px #ffd1dc;
+      max-width: 290px;
+      border-radius: 24px;
+      padding: 18px;
+      box-shadow: 0 10px 25px rgba(220, 120, 150, 0.25),
+                  0 0 0 3px #fff,
+                  0 0 0 6px #ffd1dc;
       text-align: center;
+      margin: 20px 0;
     }
 
-    /* Sticker Decorativi attorno alla card */
+    /* Sticker Decorativi attorno alla card - Posizionati meglio e più compatti */
     .sticker {
       position: absolute;
       z-index: 15;
       pointer-events: none;
-      filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.15));
+      filter: drop-shadow(2px 3px 5px rgba(0,0,0,0.2));
       animation: float 3s ease-in-out infinite alternate;
       border-radius: 50%;
+      border: 2px solid #fff;
     }
 
     .sticker-top-right {
-      width: 75px;
-      height: 75px;
+      width: 55px;
+      height: 55px;
       object-fit: cover;
-      top: -35px;
-      right: -20px;
+      top: -22px;
+      right: -15px;
     }
 
     .sticker-bottom-left {
-      width: 80px;
-      height: 80px;
+      width: 58px;
+      height: 58px;
       object-fit: cover;
-      bottom: -30px;
-      left: -25px;
+      bottom: -22px;
+      left: -18px;
       animation-delay: 1.5s;
     }
 
     @keyframes float {
       0% { transform: translateY(0px) rotate(-3deg); }
-      100% { transform: translateY(-8px) rotate(4deg); }
+      100% { transform: translateY(-6px) rotate(4deg); }
     }
 
-    /* Copertina della canzone */
+    /* Copertina della canzone ridimensionata */
     .cover-container {
-      width: 220px;
-      height: 220px;
-      margin: 0 auto 20px;
-      border-radius: 20px;
+      width: 170px;
+      height: 170px;
+      margin: 0 auto 14px;
+      border-radius: 16px;
       overflow: hidden;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.12);
       border: 3px solid #ffb6c1;
       position: relative;
     }
@@ -97,7 +99,7 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform 0.5s ease;
+      transition: transform 0.4s ease;
     }
 
     .cover-container img.playing {
@@ -106,27 +108,27 @@
 
     /* Info Canzone */
     .song-title {
-      font-size: 1.3rem;
+      font-size: 1.1rem;
       font-weight: 700;
       color: #ff5e83;
-      margin-bottom: 5px;
+      margin-bottom: 3px;
     }
 
     .song-artist {
-      font-size: 0.9rem;
+      font-size: 0.8rem;
       color: #888;
-      margin-bottom: 20px;
+      margin-bottom: 14px;
     }
 
     /* Barra di Avanzamento */
     .progress-container {
       width: 100%;
-      margin-bottom: 15px;
+      margin-bottom: 12px;
     }
 
     .progress-bar-bg {
       width: 100%;
-      height: 8px;
+      height: 6px;
       background: #ffe4e8;
       border-radius: 10px;
       cursor: pointer;
@@ -145,19 +147,19 @@
     .time-stamps {
       display: flex;
       justify-content: space-between;
-      font-size: 0.75rem;
+      font-size: 0.7rem;
       color: #aaa;
-      margin-top: 6px;
+      margin-top: 5px;
       font-weight: 600;
     }
 
-    /* Controlli */
+    /* Controlli compatti */
     .controls {
       display: flex;
       justify-content: center;
       align-items: center;
-      gap: 20px;
-      margin-top: 10px;
+      gap: 15px;
+      margin-top: 8px;
     }
 
     .btn {
@@ -169,7 +171,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      box-shadow: 0 4px 10px rgba(255, 182, 193, 0.3);
+      box-shadow: 0 3px 8px rgba(255, 182, 193, 0.3);
       transition: all 0.2s ease;
     }
 
@@ -178,19 +180,19 @@
     }
 
     .btn-skip {
-      width: 48px;
-      height: 48px;
-      font-size: 1.1rem;
+      width: 40px;
+      height: 40px;
+      font-size: 0.95rem;
     }
 
     .btn-play {
-      width: 64px;
-      height: 64px;
-      font-size: 1.5rem;
+      width: 52px;
+      height: 52px;
+      font-size: 1.25rem;
       background: #ff7597;
       color: white;
       border: none;
-      box-shadow: 0 6px 15px rgba(255, 117, 151, 0.4);
+      box-shadow: 0 5px 12px rgba(255, 117, 151, 0.4);
     }
 
     .btn-play:hover {
@@ -200,12 +202,12 @@
 
     .peanut-badge {
       display: inline-block;
-      margin-top: 15px;
+      margin-top: 12px;
       background: #fff3d1;
       color: #d97706;
-      padding: 4px 12px;
-      border-radius: 15px;
-      font-size: 0.75rem;
+      padding: 3px 10px;
+      border-radius: 12px;
+      font-size: 0.7rem;
       font-weight: bold;
     }
   </style>
@@ -252,7 +254,6 @@
   <audio id="audio"></audio>
 
   <script>
-    // Playlist di canzoni (Ricordati di rinominare i file MP3 quando li carichi su GitHub)
     const playlist = [
       {
         title: "Mixed Nuts",
