@@ -23,7 +23,7 @@
       padding: 20px;
     }
 
-    /* Container Principale Transparente */
+    /* Container Principale Trasparente */
     .game-card {
       position: relative;
       background: transparent;
@@ -56,7 +56,7 @@
       box-shadow: 0 3px 8px rgba(220, 120, 150, 0.2);
     }
 
-    /* Header Logo MOLTO GRANDE */
+    /* Header Logo Grande e Senza Sfondi */
     .header-logo {
       width: 100%;
       text-align: center;
@@ -69,6 +69,9 @@
       max-width: 300px;
       max-height: 150px;
       object-fit: contain;
+      background: transparent;
+      border: none;
+      box-shadow: none;
     }
 
     /* Pagine */
@@ -86,12 +89,15 @@
       display: flex;
     }
 
-    /* Schermata START */
+    /* Tasto Play Grafico */
     .play-btn-img {
       width: 140px;
       cursor: pointer;
       transition: transform 0.2s ease;
       margin-top: 25px;
+      background: transparent;
+      border: none;
+      box-shadow: none;
     }
 
     .play-btn-img:hover {
@@ -122,14 +128,17 @@
       box-shadow: 0 4px 10px rgba(0,0,0,0.05);
     }
 
+    /* Personaggio Anya Intro (Senza Cerchio/Sfondo) */
     .anya-character {
-      width: 150px;
-      height: 150px;
-      object-fit: cover;
-      border-radius: 50%;
-      border: 3px solid #ff7597;
+      width: 160px;
+      height: auto;
+      max-height: 180px;
+      object-fit: contain;
+      background: transparent;
+      border: none;
+      border-radius: 0;
+      box-shadow: none;
       margin-bottom: 15px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
 
     /* Griglia Risposte A B C D */
@@ -170,7 +179,7 @@
       margin-bottom: 12px;
     }
 
-    /* Anya + Fumetto */
+    /* Anya + Fumetto Domanda */
     .dialogue-container {
       display: flex;
       align-items: center;
@@ -183,12 +192,15 @@
       box-shadow: 0 4px 10px rgba(0,0,0,0.05);
     }
 
+    /* Avatar Anya mentre parla (Senza Cerchio/Bordo) */
     .anya-avatar {
-      width: 65px;
-      height: 65px;
-      object-fit: cover;
-      border-radius: 50%;
-      border: 2px solid #ff5e83;
+      width: 70px;
+      height: 70px;
+      object-fit: contain;
+      background: transparent;
+      border: none;
+      border-radius: 0;
+      box-shadow: none;
       flex-shrink: 0;
     }
 
@@ -199,19 +211,27 @@
       line-height: 1.3;
     }
 
-    /* Immagine Risposta Corretta / Sbagliata */
+    /* Immagini di Risposta Corretta / Sbagliata (Senza Cornici) */
     .feedback-img {
-      width: 170px;
-      height: 170px;
-      object-fit: cover;
-      border-radius: 20px;
-      border: 3px solid #ffb6c1;
+      width: 180px;
+      height: auto;
+      max-height: 200px;
+      object-fit: contain;
+      background: transparent;
+      border: none;
+      border-radius: 0;
+      box-shadow: none;
       margin: 15px 0;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
     }
 
+    /* Premio Finale (Senza Cornici) */
     .reward-img {
-      width: 150px;
+      width: 160px;
+      height: auto;
+      object-fit: contain;
+      background: transparent;
+      border: none;
+      box-shadow: none;
       margin: 15px 0;
     }
   </style>
