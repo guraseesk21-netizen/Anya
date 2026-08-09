@@ -20,65 +20,43 @@
       background: #ffe4e8;
       background-image: radial-gradient(#ffb6c1 1.5px, transparent 1.5px);
       background-size: 20px 20px;
-      padding: 15px;
+      padding: 20px;
     }
 
-    /* Container Principale Card */
+    /* Container Principale Transparente */
     .game-card {
       position: relative;
-      background: rgba(255, 255, 255, 0.95);
+      background: transparent;
       width: 100%;
-      max-width: 340px;
-      min-height: 580px;
-      border-radius: 24px;
-      padding: 20px;
-      box-shadow: 0 10px 25px rgba(220, 120, 150, 0.3),
-                  0 0 0 4px #fff,
-                  0 0 0 8px #ffb6c1;
+      max-width: 380px;
+      min-height: 85vh;
+      padding: 10px;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: space-between;
-      overflow: hidden;
     }
-
-    /* Sticker Angoli */
-    .sticker {
-      position: absolute;
-      width: 42px;
-      height: 42px;
-      object-fit: cover;
-      border-radius: 50%;
-      border: 2px solid #fff;
-      box-shadow: 0 3px 6px rgba(0,0,0,0.15);
-      pointer-events: none;
-      z-index: 5;
-    }
-    .sticker-1 { top: 10px; left: 10px; }
-    .sticker-2 { top: 10px; right: 50px; }
-    .sticker-3 { bottom: 10px; left: 10px; }
-    .sticker-4 { bottom: 10px; right: 10px; }
 
     /* Pulsante Musica Audio */
     .music-btn {
       position: absolute;
-      top: 10px;
-      right: 10px;
+      top: 0px;
+      right: 5px;
       z-index: 20;
       background: #fff;
       border: 2px solid #ffb6c1;
       border-radius: 50%;
-      width: 35px;
-      height: 35px;
-      font-size: 1rem;
+      width: 40px;
+      height: 40px;
+      font-size: 1.2rem;
       cursor: pointer;
       display: flex;
       justify-content: center;
       align-items: center;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      box-shadow: 0 3px 8px rgba(220, 120, 150, 0.2);
     }
 
-    /* Header Logo */
+    /* Header Logo MOLTO GRANDE */
     .header-logo {
       width: 100%;
       text-align: center;
@@ -87,8 +65,9 @@
     }
 
     .header-logo img {
-      max-width: 180px;
-      max-height: 55px;
+      width: 85%;
+      max-width: 300px;
+      max-height: 150px;
       object-fit: contain;
     }
 
@@ -109,7 +88,7 @@
 
     /* Schermata START */
     .play-btn-img {
-      width: 110px;
+      width: 140px;
       cursor: pointer;
       transition: transform 0.2s ease;
       margin-top: 25px;
@@ -123,8 +102,8 @@
       background: #ff5e83;
       color: white;
       border: none;
-      padding: 12px 35px;
-      font-size: 1.1rem;
+      padding: 14px 40px;
+      font-size: 1.2rem;
       font-weight: bold;
       border-radius: 30px;
       cursor: pointer;
@@ -133,44 +112,46 @@
 
     /* Schermata INTRO */
     .intro-text-box {
-      background: #fff0f3;
+      background: rgba(255, 255, 255, 0.85);
       border: 2px solid #ffb6c1;
-      border-radius: 15px;
+      border-radius: 18px;
       padding: 15px;
-      font-size: 0.9rem;
+      font-size: 0.95rem;
       color: #555;
-      margin-bottom: 15px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
     }
 
     .anya-character {
-      width: 130px;
-      height: 130px;
+      width: 150px;
+      height: 150px;
       object-fit: cover;
       border-radius: 50%;
       border: 3px solid #ff7597;
       margin-bottom: 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
 
     /* Griglia Risposte A B C D */
     .answers-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 8px;
+      gap: 10px;
       width: 100%;
-      margin-bottom: 10px;
+      margin-bottom: 15px;
     }
 
     .answer-btn {
       background: #fff;
       border: 2px solid #ffb6c1;
-      border-radius: 12px;
-      padding: 10px 6px;
-      font-size: 0.8rem;
+      border-radius: 14px;
+      padding: 12px 8px;
+      font-size: 0.85rem;
       font-weight: 600;
       color: #ff4d73;
       cursor: pointer;
       transition: all 0.2s;
-      box-shadow: 0 3px 6px rgba(0,0,0,0.05);
+      box-shadow: 0 3px 8px rgba(0,0,0,0.06);
     }
 
     .answer-btn:hover {
@@ -180,13 +161,13 @@
 
     /* Timer */
     .timer-box {
-      font-size: 0.8rem;
+      font-size: 0.85rem;
       font-weight: bold;
       color: #d97706;
       background: #fff3d1;
-      padding: 3px 10px;
-      border-radius: 10px;
-      margin-bottom: 10px;
+      padding: 4px 12px;
+      border-radius: 12px;
+      margin-bottom: 12px;
     }
 
     /* Anya + Fumetto */
@@ -195,15 +176,16 @@
       align-items: center;
       gap: 10px;
       width: 100%;
-      background: #fff5f7;
+      background: rgba(255, 255, 255, 0.9);
       border: 2px dashed #ffb6c1;
-      border-radius: 15px;
-      padding: 8px;
+      border-radius: 18px;
+      padding: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
     }
 
     .anya-avatar {
-      width: 60px;
-      height: 60px;
+      width: 65px;
+      height: 65px;
       object-fit: cover;
       border-radius: 50%;
       border: 2px solid #ff5e83;
@@ -211,27 +193,26 @@
     }
 
     .speech-bubble {
-      font-size: 0.8rem;
+      font-size: 0.85rem;
       color: #444;
       text-align: left;
-      line-height: 1.2;
+      line-height: 1.3;
     }
 
-    /* Immagine di Feedback (Risposta Corretta) */
+    /* Immagine Risposta Corretta / Sbagliata */
     .feedback-img {
-      width: 160px;
-      height: 160px;
+      width: 170px;
+      height: 170px;
       object-fit: cover;
-      border-radius: 16px;
+      border-radius: 20px;
       border: 3px solid #ffb6c1;
-      margin: 10px 0;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      margin: 15px 0;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
     }
 
-    /* Premio Finale */
     .reward-img {
-      width: 140px;
-      margin: 10px 0;
+      width: 150px;
+      margin: 15px 0;
     }
   </style>
 </head>
@@ -239,36 +220,32 @@
 
   <div class="game-card">
 
-    <!-- Tasto per la Musica Rilassante -->
+    <!-- Tasto Musica -->
     <button class="music-btn" onclick="toggleAudio()">🎵</button>
 
     <!-- Logo / Titolo -->
     <div class="header-logo">
       <img src="logo.png" alt="Logo" onerror="this.style.display='none'; document.getElementById('alt-title').style.display='block';">
-      <h2 id="alt-title" style="display:none; color:#ff5e83;">Anya's Quiz 🥜</h2>
+      <h1 id="alt-title" style="display:none; color:#ff5e83; font-size:2rem;">Anya's Quiz 🥜</h1>
     </div>
-
-    <!-- Sticker Opzionali -->
-    <img src="sticker1.png" class="sticker sticker-1" alt="" onerror="this.style.display='none'">
-    <img src="sticker2.png" class="sticker sticker-2" alt="" onerror="this.style.display='none'">
 
     <!-- ================= SCHERMATA 1: START ================= -->
     <div id="screen-start" class="screen active">
-      <p style="color: #888; font-size: 0.85rem; margin-top: 30px;">Anya's Mission: Peanuts Quest!</p>
+      <p style="color: #777; font-size: 0.95rem; margin-top: 30px; font-weight: 500;">Anya's Mission: Peanuts Quest!</p>
       
       <img src="play_button.png" class="play-btn-img" alt="Play" onclick="startIntro()" onerror="this.style.display='none'; document.getElementById('fallback-play').style.display='block';">
-      <button id="fallback-play" class="play-btn-fallback" style="display:none; margin-top:20px;" onclick="startIntro()">PLAY ▶</button>
+      <button id="fallback-play" class="play-btn-fallback" style="display:none; margin-top:25px;" onclick="startIntro()">PLAY ▶</button>
     </div>
 
     <!-- ================= SCHERMATA 2: INTRO ================= -->
     <div id="screen-intro" class="screen">
-      <img src="anya_happy.png" class="anya-character" alt="Anya" onerror="this.src='https://via.placeholder.com/130/ffb6c1/ffffff?text=Anya'">
+      <img src="anya_happy.png" class="anya-character" alt="Anya" onerror="this.src='https://via.placeholder.com/150/ffb6c1/ffffff?text=Anya'">
       
       <div class="intro-text-box">
         Waku Waku! Aiuta Anya a rispondere correttamente a tutte e 10 le domande per conquistare il premio finale! 🥜
       </div>
 
-      <button class="play-btn-fallback" style="font-size: 0.95rem; padding: 10px 25px;" onclick="startGame()">Inizia!</button>
+      <button class="play-btn-fallback" style="font-size: 1rem; padding: 10px 30px;" onclick="startGame()">Inizia!</button>
     </div>
 
     <!-- ================= SCHERMATA 3: DOMANDE ================= -->
@@ -287,7 +264,7 @@
 
       <!-- Anya + Fumetto -->
       <div class="dialogue-container">
-        <img id="anya-expression" src="anya_talking.png" class="anya-avatar" alt="Anya" onerror="this.src='https://via.placeholder.com/60/ffb6c1/ffffff?text=Anya'">
+        <img id="anya-expression" src="anya_talking.png" class="anya-avatar" alt="Anya" onerror="this.src='https://via.placeholder.com/65/ffb6c1/ffffff?text=Anya'">
         <div class="speech-bubble" id="question-text">
           Caricamento...
         </div>
@@ -297,99 +274,97 @@
 
     <!-- ================= SCHERMATA 4: RISPOSTA CORRETTA ================= -->
     <div id="screen-correct" class="screen">
-      <h3 style="color: #4caf50;">Risposta Corretta! ✨</h3>
-      <img id="correct-char-img" src="" class="feedback-img" alt="Personaggio" onerror="this.src='https://via.placeholder.com/160/ffb6c1/ffffff?text=Bravo!'">
-      <p style="font-size: 0.85rem; color: #555; margin-bottom: 10px;">Ottimo lavoro!</p>
-      <button class="play-btn-fallback" style="font-size: 0.85rem; padding: 8px 20px;" onclick="nextQuestion()">Prossima Domanda ▶</button>
+      <h2 style="color: #4caf50;">Risposta Corretta! ✨</h2>
+      <img id="correct-char-img" src="" class="feedback-img" alt="Personaggio" onerror="this.src='https://via.placeholder.com/170/ffb6c1/ffffff?text=Bravo!'">
+      <p style="font-size: 0.9rem; color: #555; margin-bottom: 12px;">Ottimo lavoro!</p>
+      <button class="play-btn-fallback" style="font-size: 0.9rem; padding: 10px 24px;" onclick="nextQuestion()">Prossima Domanda ▶</button>
     </div>
 
     <!-- ================= SCHERMATA 5: RISPOSTA SBAGLIATA ================= -->
     <div id="screen-wrong" class="screen">
-      <h3 style="color: #ff4d73;">Sbagliato... 😭</h3>
-      <img src="anya_crying.png" class="feedback-img" alt="Anya Piange" onerror="this.src='https://via.placeholder.com/160/ffd1dc/ff4d73?text=Anya+Piange'">
-      <p style="font-size: 0.85rem; color: #555; margin-bottom: 10px;">Riprova per Anya!</p>
-      <button class="play-btn-fallback" style="font-size: 0.85rem; padding: 8px 20px;" onclick="retryQuestion()">Riprova ↺</button>
+      <h2 style="color: #ff4d73;">Sbagliato... 😭</h2>
+      <img src="anya_crying.png" class="feedback-img" alt="Anya Piange" onerror="this.src='https://via.placeholder.com/170/ffd1dc/ff4d73?text=Anya+Piange'">
+      <p style="font-size: 0.9rem; color: #555; margin-bottom: 12px;">Riprova per Anya!</p>
+      <button class="play-btn-fallback" style="font-size: 0.9rem; padding: 10px 24px;" onclick="retryQuestion()">Riprova ↺</button>
     </div>
 
     <!-- ================= SCHERMATA 6: VITTORIA ================= -->
     <div id="screen-win" class="screen">
-      <h3 style="color: #ff5e83;">Vittoria! 🎉</h3>
-      <p style="font-size: 0.85rem; color: #555; margin-top: 5px;">Hai superato tutte le 10 domande!</p>
+      <h2 style="color: #ff5e83;">Vittoria! 🎉</h2>
+      <p style="font-size: 0.9rem; color: #555; margin-top: 5px;">Hai superato tutte le 10 domande!</p>
       
-      <img src="arachidi.png" class="reward-img" alt="Arachidi" onerror="this.src='https://via.placeholder.com/140/fef3c7/d97706?text=🥜+Arachidi!'">
+      <img src="arachidi.png" class="reward-img" alt="Arachidi" onerror="this.src='https://via.placeholder.com/150/fef3c7/d97706?text=🥜+Arachidi!'">
       
-      <p style="font-size: 0.9rem; font-weight: bold; color: #d97706;">Hai vinto un pacchetto di arachidi!</p>
+      <p style="font-size: 0.95rem; font-weight: bold; color: #d97706;">Hai vinto un pacchetto di arachidi!</p>
       
-      <button class="play-btn-fallback" style="margin-top: 15px; font-size: 0.85rem; padding: 8px 20px;" onclick="goToScreen('screen-start')">Rigioca ↺</button>
+      <button class="play-btn-fallback" style="margin-top: 15px; font-size: 0.9rem; padding: 10px 24px;" onclick="goToScreen('screen-start')">Rigioca ↺</button>
     </div>
 
   </div>
 
-  <!-- Audio Rilassante di Sottofondo -->
   <audio id="bg-music" src="relax_music.mp3" loop></audio>
 
   <script>
-    // LISTA DELLE 10 DOMANDE E IMMAGINI CORRISPONDENTI
     const questions = [
       {
         question: "Qual è il cibo preferito in assoluto di Anya?",
         options: ["Carote", "Arachidi 🥜", "Cioccolato", "Torta"],
         correct: 1,
-        image: "img_arachidi.png" // Immagine Anya con arachidi
+        image: "img_arachidi.png"
       },
       {
         question: "Come si chiama il grande cane bianco della famiglia Forger?",
         options: ["Bond 🐶", "Max", "Peanut", "Loid"],
         correct: 0,
-        image: "img_bond.png" // Immagine Bond
+        image: "img_bond.png"
       },
       {
         question: "Qual è il potere segreto di Anya?",
         options: ["Super forza", "Sa volare", "Legge la mente 🧠", "Invisibilità"],
         correct: 2,
-        image: "img_telepatia.png" // Immagine Anya faccia sorrisetto
+        image: "img_telepatia.png"
       },
       {
         question: "Come si chiama la prestigiosa scuola frequentata da Anya?",
         options: ["UA Academy", "Eden Academy 🏫", "Ouka Academy", "PK Academy"],
         correct: 1,
-        image: "img_eden.png" // Immagine Eden Academy / Divisa
+        image: "img_eden.png"
       },
       {
         question: "Qual è il nome in codice da spia di Loid Forger?",
         options: ["Thorn Princess", "Scruffy", "Twilight 🕵️‍♂️", "Daybreak"],
         correct: 2,
-        image: "img_twilight.png" // Immagine Loid Spia
+        image: "img_twilight.png"
       },
       {
         question: "Di che colore sono i capelli di Anya?",
         options: ["Biondi", "Rosa 💖", "Neri", "Castani"],
         correct: 1,
-        image: "img_capelli_rosa.png" // Primo piano Anya
+        image: "img_capelli_rosa.png"
       },
       {
         question: "Cosa vuole collezionare Anya a scuola per rendere fiero Loid?",
         options: ["Stelle Stella ⭐", "Medaglie", "Punti premio", "Peluche"],
         correct: 0,
-        image: "img_stella.png" // Immagine Stella Stella
+        image: "img_stella.png"
       },
       {
         question: "Come si chiama la migliore amica e compagna di classe di Anya?",
         options: ["Yor", "Fiona", "Becky 🎀", "Camilla"],
         correct: 2,
-        image: "img_becky.png" // Immagine Becky
+        image: "img_becky.png"
       },
       {
         question: "Cosa dice sempre Anya quando è super entusiasta?",
         options: ["Nani?!", "Waku Waku! ✨", "Sugoi!", "Baka!"],
         correct: 1,
-        image: "img_wakuwaku.png" // Immagine Waku Waku
+        image: "img_wakuwaku.png"
       },
       {
         question: "Come chiama Anya suo padre Loid quando gli parla?",
         options: ["Papà", "Chichi 👨‍👧", "Loid", "Signore"],
         correct: 1,
-        image: "img_chichi.png" // Immagine Loid e Anya
+        image: "img_chichi.png"
       }
     ];
 
@@ -435,7 +410,6 @@
 
       document.getElementById('anya-expression').src = "anya_talking.png";
 
-      // Reset del Timer
       clearInterval(timer);
       timeLeft = 15;
       document.getElementById('timer-count').textContent = timeLeft;
@@ -454,11 +428,9 @@
       const q = questions[currentQuestion];
 
       if(selectedIndex === q.correct) {
-        // Mostra la schermata con l'immagine del personaggio
         document.getElementById('correct-char-img').src = q.image;
         goToScreen('screen-correct');
       } else {
-        // Mostra la schermata di errore con Anya che piange
         goToScreen('screen-wrong');
       }
     }
