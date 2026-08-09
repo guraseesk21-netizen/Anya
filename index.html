@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Anya's Mission: Peanuts Quest! 🥜</title>
+  <title>Anya's Quiz 🥜</title>
   <style>
     * {
       box-sizing: border-box;
@@ -19,11 +19,29 @@
       align-items: center;
       background: #ffebee; /* Rosa chiaro tinta unita */
       padding: 15px;
+      position: relative;
+      overflow: hidden;
     }
+
+    /* Sticker Arachide sparsi sullo sfondo */
+    .bg-peanut {
+      position: absolute;
+      width: 45px;
+      height: auto;
+      opacity: 0.25;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .p-1 { top: 5%; left: 8%; transform: rotate(-15deg); }
+    .p-2 { top: 12%; right: 10%; transform: rotate(20deg); }
+    .p-3 { top: 50%; left: 4%; transform: rotate(45deg); }
+    .p-4 { bottom: 15%; right: 6%; transform: rotate(-30deg); }
+    .p-5 { bottom: 6%; left: 12%; transform: rotate(10deg); }
 
     /* Container Principale */
     .game-card {
       position: relative;
+      z-index: 10;
       background: transparent;
       width: 100%;
       max-width: 380px;
@@ -42,7 +60,7 @@
       right: 5px;
       z-index: 20;
       background: #fff;
-      border: 2px solid #ffb6c1;
+      border: 2px solid #ffccd5;
       border-radius: 50%;
       width: 40px;
       height: 40px;
@@ -51,35 +69,26 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      box-shadow: 0 3px 8px rgba(220, 120, 150, 0.2);
+      box-shadow: 0 3px 8px rgba(220, 120, 150, 0.15);
     }
 
-    /* Header Logo con Arachide Decorativa */
+    /* Header Logo Grande e Centrato */
     .header-logo {
       width: 100%;
       text-align: center;
       margin-top: 15px;
       margin-bottom: 10px;
-      position: relative;
       display: flex;
       justify-content: center;
       align-items: center;
     }
 
     .header-logo img.logo-img {
-      width: 80%;
-      max-width: 280px;
-      max-height: 140px;
+      width: 90%;
+      max-width: 320px;
+      max-height: 160px;
       object-fit: contain;
       background: transparent;
-    }
-
-    /* Piccola arachide decorativa accanto al logo */
-    .peanut-icon-decor {
-      width: 35px;
-      height: auto;
-      object-fit: contain;
-      margin-left: 8px;
     }
 
     /* Pagine */
@@ -99,14 +108,14 @@
 
     /* Anya Vestita da Arachide (Schermata Principale) */
     .anya-peanut-hero {
-      width: 170px;
+      width: 175px;
       height: auto;
       object-fit: contain;
-      margin: 15px 0;
+      margin: 20px 0;
       background: transparent;
     }
 
-    /* Tasto Play Grafico */
+    /* Tasto Play Grafico e Pulsanti Più Chiari */
     .play-btn-img {
       width: 140px;
       cursor: pointer;
@@ -120,7 +129,7 @@
     }
 
     .play-btn-fallback {
-      background: #ff5e83;
+      background: #ff85a2; /* Rosa più chiaro e luminoso */
       color: white;
       border: none;
       padding: 14px 40px;
@@ -128,19 +137,24 @@
       font-weight: bold;
       border-radius: 30px;
       cursor: pointer;
-      box-shadow: 0 5px 15px rgba(255, 94, 131, 0.4);
+      box-shadow: 0 5px 15px rgba(255, 133, 162, 0.4);
+      transition: background 0.2s;
+    }
+
+    .play-btn-fallback:hover {
+      background: #ff9ebb;
     }
 
     /* Schermata INTRO */
     .intro-text-box {
-      background: rgba(255, 255, 255, 0.9);
-      border: 2px solid #ffb6c1;
+      background: rgba(255, 255, 255, 0.95);
+      border: 2px solid #ffccd5;
       border-radius: 18px;
       padding: 15px;
       font-size: 0.95rem;
       color: #555;
       margin-bottom: 20px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.04);
     }
 
     .anya-character {
@@ -157,36 +171,25 @@
       grid-template-columns: 1fr 1fr;
       gap: 10px;
       width: 100%;
-      margin-bottom: 15px;
+      margin-bottom: 20px;
     }
 
     .answer-btn {
-      background: #fff;
-      border: 2px solid #ffb6c1;
+      background: #ffffff;
+      border: 2px solid #ffccd5;
       border-radius: 14px;
-      padding: 12px 8px;
-      font-size: 0.85rem;
+      padding: 14px 8px;
+      font-size: 0.88rem;
       font-weight: 600;
-      color: #ff4d73;
+      color: #ff6584; /* Testo rosa chiaro ben visibile */
       cursor: pointer;
       transition: all 0.2s;
-      box-shadow: 0 3px 8px rgba(0,0,0,0.06);
+      box-shadow: 0 3px 8px rgba(0,0,0,0.04);
     }
 
     .answer-btn:hover {
-      background: #ffe6eb;
+      background: #fff0f3;
       transform: translateY(-2px);
-    }
-
-    /* Timer */
-    .timer-box {
-      font-size: 0.85rem;
-      font-weight: bold;
-      color: #d97706;
-      background: #fff3d1;
-      padding: 4px 12px;
-      border-radius: 12px;
-      margin-bottom: 15px;
     }
 
     /* Anya in Basso a Sinistra + Fumetto Staccato */
@@ -209,14 +212,14 @@
     .speech-bubble-standalone {
       position: relative;
       background: #ffffff;
-      border: 2px solid #ffb6c1;
+      border: 2px solid #ffccd5;
       border-radius: 18px;
-      padding: 12px 15px;
-      font-size: 0.85rem;
+      padding: 14px 16px;
+      font-size: 0.88rem;
       color: #444;
       text-align: left;
       line-height: 1.35;
-      box-shadow: 0 4px 12px rgba(220, 120, 150, 0.15);
+      box-shadow: 0 4px 12px rgba(220, 120, 150, 0.12);
       flex-grow: 1;
       margin-bottom: 10px;
     }
@@ -241,7 +244,7 @@
       bottom: 14px;
       border-width: 9px 11px 9px 0;
       border-style: solid;
-      border-color: transparent #ffb6c1 transparent transparent;
+      border-color: transparent #ffccd5 transparent transparent;
       display: block;
       width: 0;
       z-index: 0;
@@ -257,7 +260,6 @@
       margin: 15px 0;
     }
 
-    /* Premio Finale */
     .reward-img {
       width: 160px;
       height: auto;
@@ -269,21 +271,26 @@
 </head>
 <body>
 
+  <!-- Sticker Arachide Sparsi nello Sfondo -->
+  <img src="Arachide.png" class="bg-peanut p-1" alt="Arachide BG">
+  <img src="Arachide.png" class="bg-peanut p-2" alt="Arachide BG">
+  <img src="Arachide.png" class="bg-peanut p-3" alt="Arachide BG">
+  <img src="Arachide.png" class="bg-peanut p-4" alt="Arachide BG">
+  <img src="Arachide.png" class="bg-peanut p-5" alt="Arachide BG">
+
   <div class="game-card">
 
     <!-- Tasto Musica -->
     <button class="music-btn" onclick="toggleAudio()">🎵</button>
 
-    <!-- Header Logo + Icona Arachide -->
+    <!-- Header Logo Grande e Centrato -->
     <div class="header-logo">
       <img src="logo.png" class="logo-img" alt="Logo" onerror="this.style.display='none'; document.getElementById('alt-title').style.display='block';">
-      <img src="Arachide.png" class="peanut-icon-decor" alt="Arachide Decorativa">
-      <h1 id="alt-title" style="display:none; color:#ff5e83; font-size:2rem;">Anya's Quiz 🥜</h1>
+      <h1 id="alt-title" style="display:none; color:#ff85a2; font-size:2.2rem;">Anya's Quiz 🥜</h1>
     </div>
 
     <!-- ================= SCHERMATA 1: START ================= -->
     <div id="screen-start" class="screen active">
-      <p style="color: #777; font-size: 0.95rem; font-weight: 500;">Anya's Mission: Peanuts Quest!</p>
       
       <!-- Anya Vestita da Arachide al Centro -->
       <img src="Anya_aracidi.png" class="anya-peanut-hero" alt="Anya Arachide">
@@ -315,9 +322,6 @@
         <button class="answer-btn" onclick="checkAnswer(3)">D: <span id="opt-3"></span></button>
       </div>
 
-      <!-- Timer -->
-      <div class="timer-box">⏱ Tempo: <span id="timer-count">15</span>s</div>
-
       <!-- Anya in Basso a Sinistra + Fumetto Staccato -->
       <div class="dialogue-wrapper">
         <img id="anya-expression" src="anya_talking.png" class="anya-avatar-standalone" alt="Anya" onerror="this.src='https://via.placeholder.com/95/ffb6c1/ffffff?text=Anya'">
@@ -338,7 +342,7 @@
 
     <!-- ================= SCHERMATA 5: RISPOSTA SBAGLIATA ================= -->
     <div id="screen-wrong" class="screen">
-      <h2 style="color: #ff4d73;">Sbagliato... 😭</h2>
+      <h2 style="color: #ff6584;">Sbagliato... 😭</h2>
       <img src="anya_crying.png" class="feedback-img" alt="Anya Piange" onerror="this.src='https://via.placeholder.com/170/ffd1dc/ff4d73?text=Anya+Piange'">
       <p style="font-size: 0.9rem; color: #555; margin-bottom: 12px;">Riprova per Anya!</p>
       <button class="play-btn-fallback" style="font-size: 0.9rem; padding: 10px 24px;" onclick="retryQuestion()">Riprova ↺</button>
@@ -346,10 +350,9 @@
 
     <!-- ================= SCHERMATA 6: VITTORIA ================= -->
     <div id="screen-win" class="screen">
-      <h2 style="color: #ff5e83;">Vittoria! 🎉</h2>
+      <h2 style="color: #ff85a2;">Vittoria! 🎉</h2>
       <p style="font-size: 0.9rem; color: #555; margin-top: 5px;">Hai superato tutte le 10 domande!</p>
       
-      <!-- Immagine dell'arachide come premio finale -->
       <img src="Arachide.png" class="reward-img" alt="Arachide Premio">
       
       <p style="font-size: 0.95rem; font-weight: bold; color: #d97706;">Hai vinto un pacchetto di arachidi!</p>
@@ -397,7 +400,7 @@
         question: "Di che colore sono i capelli di Anya?",
         options: ["Biondi", "Rosa 💖", "Neri", "Castani"],
         correct: 1,
-        image: "Capelli.png" /* Immagine aggiornata con la tua foto! */
+        image: "Capelli.png"
       },
       {
         question: "Cosa vuole collezionare Anya a scuola per rendere fiero Loid?",
@@ -426,8 +429,6 @@
     ];
 
     let currentQuestion = 0;
-    let timer;
-    let timeLeft = 15;
     let isMusicPlaying = false;
     const bgMusic = document.getElementById('bg-music');
 
@@ -466,22 +467,9 @@
       }
 
       document.getElementById('anya-expression').src = "anya_talking.png";
-
-      clearInterval(timer);
-      timeLeft = 15;
-      document.getElementById('timer-count').textContent = timeLeft;
-      timer = setInterval(() => {
-        timeLeft--;
-        document.getElementById('timer-count').textContent = timeLeft;
-        if(timeLeft <= 0) {
-          clearInterval(timer);
-          goToScreen('screen-wrong');
-        }
-      }, 1000);
     }
 
     function checkAnswer(selectedIndex) {
-      clearInterval(timer);
       const q = questions[currentQuestion];
 
       if(selectedIndex === q.correct) {
@@ -509,3 +497,4 @@
   </script>
 </body>
 </html>
+
