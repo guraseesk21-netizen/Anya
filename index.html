@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Anya's Music Player 🥜</title>
+  <title>Anya's Quiz Game 🥜</title>
   <style>
     * {
       box-sizing: border-box;
@@ -17,354 +17,384 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      background: url('0a2bf83cc0d4041dd33ebb5c83ed8666.jpg') repeat center center;
-      background-size: 200px;
-      padding: 30px 15px;
-      overflow-x: hidden;
-      position: relative;
+      background: #ffe4e8;
+      background-image: radial-gradient(#ffb6c1 1.5px, transparent 1.5px);
+      background-size: 20px 20px;
+      padding: 15px;
     }
 
-    /* Overlay per ammorbidire lo sfondo */
-    body::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(255, 240, 245, 0.45);
-      z-index: 0;
-    }
-
-    /* Card del Player Musicale - Dimensioni Ridotte */
-    .player-card {
+    /* Container Principale (Schermo del gioco) */
+    .game-card {
       position: relative;
-      z-index: 10;
-      background: rgba(255, 255, 255, 0.94);
-      backdrop-filter: blur(10px);
+      background: rgba(255, 255, 255, 0.95);
       width: 100%;
-      max-width: 290px;
+      max-width: 350px;
+      min-height: 580px;
       border-radius: 24px;
-      padding: 18px;
-      box-shadow: 0 10px 25px rgba(220, 120, 150, 0.25),
-                  0 0 0 3px #fff,
-                  0 0 0 6px #ffd1dc;
-      text-align: center;
-      margin: 20px 0;
+      padding: 20px;
+      box-shadow: 0 10px 25px rgba(220, 120, 150, 0.3),
+                  0 0 0 4px #fff,
+                  0 0 0 8px #ffb6c1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      overflow: hidden;
     }
 
-    /* Sticker Decorativi attorno alla card - Posizionati meglio e più compatti */
+    /* Sticker Decorativi */
     .sticker {
       position: absolute;
-      z-index: 15;
-      pointer-events: none;
-      filter: drop-shadow(2px 3px 5px rgba(0,0,0,0.2));
-      animation: float 3s ease-in-out infinite alternate;
+      width: 45px;
+      height: 45px;
+      object-fit: cover;
       border-radius: 50%;
       border: 2px solid #fff;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+      pointer-events: none;
     }
 
-    .sticker-top-right {
-      width: 55px;
-      height: 55px;
-      object-fit: cover;
-      top: -22px;
-      right: -15px;
-    }
+    .sticker-1 { top: 10px; left: 10px; }
+    .sticker-2 { top: 10px; right: 10px; }
+    .sticker-3 { bottom: 10px; left: 10px; }
+    .sticker-4 { bottom: 10px; right: 10px; }
 
-    .sticker-bottom-left {
-      width: 58px;
-      height: 58px;
-      object-fit: cover;
-      bottom: -22px;
-      left: -18px;
-      animation-delay: 1.5s;
-    }
-
-    @keyframes float {
-      0% { transform: translateY(0px) rotate(-3deg); }
-      100% { transform: translateY(-6px) rotate(4deg); }
-    }
-
-    /* Copertina della canzone ridimensionata */
-    .cover-container {
-      width: 170px;
-      height: 170px;
-      margin: 0 auto 14px;
-      border-radius: 16px;
-      overflow: hidden;
-      box-shadow: 0 6px 15px rgba(0,0,0,0.12);
-      border: 3px solid #ffb6c1;
-      position: relative;
-    }
-
-    .cover-container img {
+    /* Logo / Titolo in alto */
+    .header-logo {
       width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.4s ease;
+      text-align: center;
+      margin-bottom: 10px;
     }
 
-    .cover-container img.playing {
-      transform: scale(1.04);
+    .header-logo img {
+      max-width: 180px;
+      max-height: 60px;
+      object-fit: contain;
     }
 
-    /* Info Canzone */
-    .song-title {
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: #ff5e83;
-      margin-bottom: 3px;
-    }
-
-    .song-artist {
-      font-size: 0.8rem;
-      color: #888;
-      margin-bottom: 14px;
-    }
-
-    /* Barra di Avanzamento */
-    .progress-container {
+    /* Gestione Pagine */
+    .screen {
       width: 100%;
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      flex-grow: 1;
+    }
+
+    .screen.active {
+      display: flex;
+    }
+
+    /* PAGINA 1: HOME */
+    .play-btn-img {
+      width: 120px;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+      margin-top: 30px;
+    }
+
+    .play-btn-img:hover {
+      transform: scale(1.08);
+    }
+
+    .play-btn-fallback {
+      background: #ff5e83;
+      color: white;
+      border: none;
+      padding: 15px 40px;
+      font-size: 1.3rem;
+      font-weight: bold;
+      border-radius: 30px;
+      cursor: pointer;
+      box-shadow: 0 5px 15px rgba(255, 94, 131, 0.4);
+    }
+
+    /* PAGINA 2: INTRODUZIONE */
+    .intro-text-box {
+      background: #fff0f3;
+      border: 2px solid #ffb6c1;
+      border-radius: 15px;
+      padding: 15px;
+      text-align: center;
+      font-size: 0.95rem;
+      color: #555;
+      margin-bottom: 15px;
+    }
+
+    .anya-character {
+      width: 140px;
+      height: 140px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 3px solid #ff7597;
+      margin-bottom: 15px;
+    }
+
+    /* PAGINA 3: DOMANDE (GRIGLIA RISPOSTE A B C D) */
+    .answers-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      width: 100%;
+      margin-bottom: 10px;
+    }
+
+    .answer-btn {
+      background: #fff;
+      border: 2px solid #ffb6c1;
+      border-radius: 12px;
+      padding: 12px 8px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #ff4d73;
+      cursor: pointer;
+      transition: all 0.2s;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.05);
+    }
+
+    .answer-btn:hover {
+      background: #ffe6eb;
+      transform: translateY(-2px);
+    }
+
+    /* TIMER */
+    .timer-box {
+      font-size: 0.85rem;
+      font-weight: bold;
+      color: #d97706;
+      background: #fff3d1;
+      padding: 4px 12px;
+      border-radius: 10px;
       margin-bottom: 12px;
     }
 
-    .progress-bar-bg {
+    /* SEZIONE IN BASSO: ANYA + FUMETTO */
+    .dialogue-container {
+      display: flex;
+      align-items: center;
+      gap: 10px;
       width: 100%;
-      height: 6px;
-      background: #ffe4e8;
-      border-radius: 10px;
-      cursor: pointer;
-      position: relative;
-      overflow: hidden;
+      background: #fff5f7;
+      border: 2px dashed #ffb6c1;
+      border-radius: 15px;
+      padding: 10px;
     }
 
-    .progress-bar-fill {
-      height: 100%;
-      width: 0%;
-      background: linear-gradient(90deg, #ff9a9e, #fecfef);
-      border-radius: 10px;
-      transition: width 0.1s linear;
-    }
-
-    .time-stamps {
-      display: flex;
-      justify-content: space-between;
-      font-size: 0.7rem;
-      color: #aaa;
-      margin-top: 5px;
-      font-weight: 600;
-    }
-
-    /* Controlli compatti */
-    .controls {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 15px;
-      margin-top: 8px;
-    }
-
-    .btn {
-      background: #fff;
-      border: 2px solid #ffd1dc;
-      color: #ff5e83;
+    .anya-avatar {
+      width: 65px;
+      height: 65px;
+      object-fit: cover;
       border-radius: 50%;
-      cursor: pointer;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      box-shadow: 0 3px 8px rgba(255, 182, 193, 0.3);
-      transition: all 0.2s ease;
+      border: 2px solid #ff5e83;
+      flex-shrink: 0;
     }
 
-    .btn:active {
-      transform: scale(0.92);
+    .speech-bubble {
+      font-size: 0.85rem;
+      color: #444;
+      line-height: 1.2;
     }
 
-    .btn-skip {
-      width: 40px;
-      height: 40px;
-      font-size: 0.95rem;
-    }
-
-    .btn-play {
-      width: 52px;
-      height: 52px;
-      font-size: 1.25rem;
-      background: #ff7597;
-      color: white;
-      border: none;
-      box-shadow: 0 5px 12px rgba(255, 117, 151, 0.4);
-    }
-
-    .btn-play:hover {
-      background: #ff5e83;
-      transform: scale(1.05);
-    }
-
-    .peanut-badge {
-      display: inline-block;
-      margin-top: 12px;
-      background: #fff3d1;
-      color: #d97706;
-      padding: 3px 10px;
-      border-radius: 12px;
-      font-size: 0.7rem;
-      font-weight: bold;
+    /* SCHERMATA FINALE / PREMIO */
+    .reward-img {
+      width: 150px;
+      margin: 15px 0;
     }
   </style>
 </head>
 <body>
 
-  <!-- Card del Player -->
-  <div class="player-card">
-    
-    <!-- Sticker Decorativi -->
-    <img src="0c6d17c99428075236694e6db7dc5364.jpg" class="sticker sticker-top-right" alt="Anya Sticker 1">
-    <img src="3037d58795e47872235ce21b53c8d9fc.jpg" class="sticker sticker-bottom-left" alt="Anya Sticker 2">
+  <div class="game-card">
 
-    <!-- Copertina -->
-    <div class="cover-container">
-      <img id="cover" src="5b214622e3478e50a8f223cf8ccc1076.jpg" alt="Anya Cover">
+    <!-- Header sempre visibile con Logo/Titolo -->
+    <div class="header-logo">
+      <!-- Sostituisci logo.png con l'immagine creata su Ibis Paint -->
+      <img src="logo.png" alt="Logo Gioco" onerror="this.style.display='none'; document.getElementById('alt-title').style.display='block';">
+      <h2 id="alt-title" style="display:none; color:#ff5e83;">Anya's Quiz 🥜</h2>
     </div>
 
-    <!-- Info Brano -->
-    <div class="song-title" id="title">Mixed Nuts</div>
-    <div class="song-artist" id="artist">Official HIGE DANdism</div>
+    <!-- Sticker d'angolo opzionali -->
+    <img src="sticker1.png" class="sticker sticker-1" alt="" onerror="this.style.display='none'">
+    <img src="sticker2.png" class="sticker sticker-2" alt="" onerror="this.style.display='none'">
 
-    <!-- Barra Musica -->
-    <div class="progress-container">
-      <div class="progress-bar-bg" id="progress-bg">
-        <div class="progress-bar-fill" id="progress-fill"></div>
+    <!-- ================= SCHERMATA 1: START ================= -->
+    <div id="screen-start" class="screen active">
+      <p style="color: #888; font-size: 0.9rem; margin-top: 40px;">Benvenuto nel mini gioco!</p>
+      
+      <!-- Tasto Play fatto con Ibis Paint -->
+      <img src="play_button.png" class="play-btn-img" alt="Play" onclick="goToScreen('screen-intro')" onerror="this.style.display='none'; document.getElementById('fallback-play').style.display='block';">
+      <button id="fallback-play" class="play-btn-fallback" style="display:none;" onclick="goToScreen('screen-intro')">PLAY ▶</button>
+    </div>
+
+    <!-- ================= SCHERMATA 2: INTRO ================= -->
+    <div id="screen-intro" class="screen">
+      <img src="anya_happy.png" class="anya-character" alt="Anya" onerror="this.src='https://via.placeholder.com/140/ffb6c1/ffffff?text=Anya'">
+      
+      <div class="intro-text-box">
+        Waku Waku! Aiuta Anya a rispondere a 10 domande per vincere il premio finale! 🥜
       </div>
-      <div class="time-stamps">
-        <span id="current-time">0:00</span>
-        <span id="duration">0:00</span>
+
+      <button class="play-btn-fallback" style="font-size: 1rem; padding: 10px 25px;" onclick="startGame()">Inizia il Quiz!</button>
+    </div>
+
+    <!-- ================= SCHERMATA 3: DOMANDE ================= -->
+    <div id="screen-quiz" class="screen">
+      
+      <!-- Risposte A B C D -->
+      <div class="answers-grid">
+        <button class="answer-btn" onclick="checkAnswer(0)">A: <span id="opt-0">Opzione A</span></button>
+        <button class="answer-btn" onclick="checkAnswer(1)">B: <span id="opt-1">Opzione B</span></button>
+        <button class="answer-btn" onclick="checkAnswer(2)">C: <span id="opt-2">Opzione C</span></button>
+        <button class="answer-btn" onclick="checkAnswer(3)">D: <span id="opt-3">Opzione D</span></button>
       </div>
+
+      <!-- Timer Facoltativo -->
+      <div class="timer-box">⏱ Tempo: <span id="timer-count">15</span>s</div>
+
+      <!-- Anya in basso con il fumetto della domanda -->
+      <div class="dialogue-container">
+        <img id="anya-expression" src="anya_talking.png" class="anya-avatar" alt="Anya" onerror="this.src='https://via.placeholder.com/65/ffb6c1/ffffff?text=Anya'">
+        <div class="speech-bubble" id="question-text">
+          Caricamento domanda...
+        </div>
+      </div>
+
     </div>
 
-    <!-- Controlli -->
-    <div class="controls">
-      <button class="btn btn-skip" id="prev-btn">⏮</button>
-      <button class="btn btn-play" id="play-btn">▶</button>
-      <button class="btn btn-skip" id="next-btn">⏭</button>
+    <!-- ================= SCHERMATA 4: VITTORIA ================= -->
+    <div id="screen-win" class="screen">
+      <h3 style="color: #ff5e83;">Complimenti! 🎉</h3>
+      <p style="font-size: 0.85rem; color: #555; margin-top: 5px;">Hai superato tutte le domande!</p>
+      
+      <img src="arachidi.png" class="reward-img" alt="Pacchetto Arachidi" onerror="this.src='https://via.placeholder.com/150/fef3c7/d97706?text=🥜+Arachidi!'">
+      
+      <p style="font-size: 0.9rem; font-weight: bold; color: #d97706;">Hai vinto un pacchetto di arachidi!</p>
+      
+      <button class="play-btn-fallback" style="margin-top: 15px; font-size: 0.9rem; padding: 10px 20px;" onclick="goToScreen('screen-start')">Gioca Ancora</button>
     </div>
 
-    <div class="peanut-badge">Anya Likes Peanuts! 🥜</div>
   </div>
 
-  <audio id="audio"></audio>
-
   <script>
-    const playlist = [
+    // 10 DOMANDE DEL QUIZ (Puoi modificare il testo e le opzioni qui)
+    const questions = [
       {
-        title: "Mixed Nuts",
-        artist: "Official HIGE DANdism",
-        cover: "5b214622e3478e50a8f223cf8ccc1076.jpg",
-        src: "canzone1.mp3"
+        question: "Qual è il cibo preferito in assoluto di Anya?",
+        options: ["Carote", "Arachidi", "Cioccolato", "Torta"],
+        correct: 1
       },
       {
-        title: "Souvenir",
-        artist: "BUMP OF CHICKEN",
-        cover: "bec9f3b0f76b2e25f5d01423abcd30d8.jpg",
-        src: "canzone2.mp3"
+        question: "Come si chiama il cane della famiglia Forger?",
+        options: ["Bond", "Max", "Peanut", "Loid"],
+        correct: 0
       },
       {
-        title: "Kiseki",
-        artist: "SPY x FAMILY OST",
-        cover: "d0a517642140232317871409ae0ea77d.jpg",
-        src: "canzone3.mp3"
+        question: "Qual è il potere segreto di Anya?",
+        options: ["Leggere il pensiero", "Invisibilità", "Super forza", "Volare"],
+        correct: 0
       },
       {
-        title: "Comedy",
-        artist: "Gen Hoshino",
-        cover: "d324bd5f968e5c06fa3a748b2d73ae09.jpg",
-        src: "canzone4.mp3"
+        question: "Come si chiama la scuola frequentata da Anya?",
+        options: ["O连续", "Eden Academy", "UA Academy", "PK Academy"],
+        correct: 1
+      },
+      {
+        question: "Qual è il nome in codice di Loid Forger?",
+        options: ["Thorn Princess", "Twilight", "Scruffy", "Daybreak"],
+        correct: 1
+      },
+      {
+        question: "Qual è il colore dei capelli di Anya?",
+        options: ["Biondi", "Neri", "Rosa", "Castani"],
+        correct: 2
+      },
+      {
+        question: "Cosa vuole ottenere Anya per rendere fiero Loid?",
+        options: ["Stella Stella", "Medaglia d'oro", "Dolci", "Un peluche"],
+        correct: 0
+      },
+      {
+        question: "Come si chiama la migliore amica di Anya a scuola?",
+        options: ["Yor", "Becky", "Fiona", "Damian"],
+        correct: 1
+      },
+      {
+        question: "Qual è la parola famosa che dice Anya quando è entusiasta?",
+        options: ["Nani!", "Waku Waku!", "Sugoi!", "Baka!"],
+        correct: 1
+      },
+      {
+        question: "Come chiama Anya suo padre Loid?",
+        options: ["Papà", "Chichi", "Loid", "Master"],
+        correct: 1
       }
     ];
 
-    let songIndex = 0;
-    let isPlaying = false;
+    let currentQuestion = 0;
+    let timer;
+    let timeLeft = 15;
 
-    const audio = document.getElementById('audio');
-    const playBtn = document.getElementById('play-btn');
-    const prevBtn = document.getElementById('prev-btn');
-    const nextBtn = document.getElementById('next-btn');
-    const title = document.getElementById('title');
-    const artist = document.getElementById('artist');
-    const cover = document.getElementById('cover');
-    const progressFill = document.getElementById('progress-fill');
-    const progressBg = document.getElementById('progress-bg');
-    const currentTimeEl = document.getElementById('current-time');
-    const durationEl = document.getElementById('duration');
-
-    function loadSong(song) {
-      title.textContent = song.title;
-      artist.textContent = song.artist;
-      cover.src = song.cover;
-      audio.src = song.src;
+    function goToScreen(screenId) {
+      document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+      document.getElementById(screenId).classList.add('active');
     }
 
-    function playSong() {
-      isPlaying = true;
-      playBtn.textContent = '⏸';
-      cover.classList.add('playing');
-      audio.play().catch(() => {});
+    function startGame() {
+      currentQuestion = 0;
+      goToScreen('screen-quiz');
+      loadQuestion();
     }
 
-    function pauseSong() {
-      isPlaying = false;
-      playBtn.textContent = '▶';
-      cover.classList.remove('playing');
-      audio.pause();
-    }
-
-    playBtn.addEventListener('click', () => {
-      isPlaying ? pauseSong() : playSong();
-    });
-
-    nextBtn.addEventListener('click', () => {
-      songIndex = (songIndex + 1) % playlist.length;
-      loadSong(playlist[songIndex]);
-      playSong();
-    });
-
-    prevBtn.addEventListener('click', () => {
-      songIndex = (songIndex - 1 + playlist.length) % playlist.length;
-      loadSong(playlist[songIndex]);
-      playSong();
-    });
-
-    audio.addEventListener('timeupdate', (e) => {
-      const { duration, currentTime } = e.srcElement;
-      if (duration) {
-        const progressPercent = (currentTime / duration) * 100;
-        progressFill.style.width = `${progressPercent}%`;
-
-        const currentMin = Math.floor(currentTime / 60);
-        const currentSec = Math.floor(currentTime % 60);
-        currentTimeEl.textContent = `${currentMin}:${currentSec < 10 ? '0' : ''}${currentSec}`;
-
-        const durationMin = Math.floor(duration / 60);
-        const durationSec = Math.floor(duration % 60);
-        durationEl.textContent = `${durationMin}:${durationSec < 10 ? '0' : ''}${durationSec}`;
+    function loadQuestion() {
+      const q = questions[currentQuestion];
+      document.getElementById('question-text').textContent = q.question;
+      
+      // Carica opzioni
+      for(let i = 0; i < 4; i++) {
+        document.getElementById(`opt-${i}`).textContent = q.options[i];
       }
-    });
 
-    progressBg.addEventListener('click', (e) => {
-      const width = progressBg.clientWidth;
-      const clickX = e.offsetX;
-      const duration = audio.duration;
-      if (duration) {
-        audio.currentTime = (clickX / width) * duration;
+      // Reset Espressione Anya
+      document.getElementById('anya-expression').src = "anya_talking.png";
+
+      // Reset Timer
+      clearInterval(timer);
+      timeLeft = 15;
+      document.getElementById('timer-count').textContent = timeLeft;
+      timer = setInterval(() => {
+        timeLeft--;
+        document.getElementById('timer-count').textContent = timeLeft;
+        if(timeLeft <= 0) {
+          clearInterval(timer);
+          showWrongAnswer("Tempo scaduto! Riprova per Anya!");
+        }
+      }, 1000);
+    }
+
+    function checkAnswer(selectedIndex) {
+      clearInterval(timer);
+      const q = questions[currentQuestion];
+
+      if(selectedIndex === q.correct) {
+        // RISPOSTA CORRETTA
+        currentQuestion++;
+        if(currentQuestion < questions.length) {
+          loadQuestion();
+        } else {
+          goToScreen('screen-win');
+        }
+      } else {
+        // RISPOSTA SBAGLIATA
+        showWrongAnswer("Sbagliato... Riprova per Anya! 😭");
       }
-    });
+    }
 
-    audio.addEventListener('ended', () => {
-      songIndex = (songIndex + 1) % playlist.length;
-      loadSong(playlist[songIndex]);
-      playSong();
-    });
-
-    loadSong(playlist[songIndex]);
+    function showWrongAnswer(msg) {
+      document.getElementById('question-text').textContent = msg;
+      // Mostra Anya che piange
+      document.getElementById('anya-expression').src = "anya_crying.png";
+    }
   </script>
 </body>
 </html>
