@@ -18,25 +18,30 @@
       justify-content: center;
       align-items: center;
       background: #ffebee; /* Rosa chiaro tinta unita */
-      padding: 15px;
+      padding: 10px;
       position: relative;
       overflow: hidden;
     }
 
-    /* Sticker Arachide sparsi sullo sfondo */
+    /* Sticker Arachide sparsi sullo sfondo (Molti di più) */
     .bg-peanut {
       position: absolute;
-      width: 45px;
+      width: 48px;
       height: auto;
-      opacity: 0.25;
+      opacity: 0.28;
       pointer-events: none;
       z-index: 0;
     }
-    .p-1 { top: 5%; left: 8%; transform: rotate(-15deg); }
-    .p-2 { top: 12%; right: 10%; transform: rotate(20deg); }
-    .p-3 { top: 50%; left: 4%; transform: rotate(45deg); }
-    .p-4 { bottom: 15%; right: 6%; transform: rotate(-30deg); }
-    .p-5 { bottom: 6%; left: 12%; transform: rotate(10deg); }
+    .p-1  { top: 3%; left: 5%; transform: rotate(-15deg); }
+    .p-2  { top: 8%; right: 6%; transform: rotate(25deg); }
+    .p-3  { top: 25%; left: 80%; transform: rotate(-35deg); }
+    .p-4  { top: 38%; left: 4%; transform: rotate(45deg); }
+    .p-5  { top: 55%; right: 5%; transform: rotate(-15deg); }
+    .p-6  { bottom: 28%; left: 6%; transform: rotate(20deg); }
+    .p-7  { bottom: 15%; right: 8%; transform: rotate(-30deg); }
+    .p-8  { bottom: 4%; left: 10%; transform: rotate(15deg); }
+    .p-9  { bottom: 3%; right: 25%; transform: rotate(-40deg); }
+    .p-10 { top: 18%; left: 12%; transform: rotate(30deg); }
 
     /* Container Principale */
     .game-card {
@@ -44,9 +49,9 @@
       z-index: 10;
       background: transparent;
       width: 100%;
-      max-width: 380px;
+      max-width: 390px;
       min-height: 85vh;
-      padding: 10px;
+      padding: 5px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -72,21 +77,21 @@
       box-shadow: 0 3px 8px rgba(220, 120, 150, 0.15);
     }
 
-    /* Header Logo Grande e Centrato */
+    /* Header Logo ENORME e Centrato */
     .header-logo {
       width: 100%;
       text-align: center;
-      margin-top: 15px;
-      margin-bottom: 10px;
+      margin-top: 10px;
+      margin-bottom: 5px;
       display: flex;
       justify-content: center;
       align-items: center;
     }
 
     .header-logo img.logo-img {
-      width: 90%;
-      max-width: 320px;
-      max-height: 160px;
+      width: 98%;
+      max-width: 360px;
+      max-height: 200px;
       object-fit: contain;
       background: transparent;
     }
@@ -111,13 +116,13 @@
       width: 175px;
       height: auto;
       object-fit: contain;
-      margin: 20px 0;
+      margin: 15px 0;
       background: transparent;
     }
 
-    /* Tasto Play Grafico e Pulsanti Più Chiari */
+    /* Tasto Play Grafico e Pulsanti Chiari */
     .play-btn-img {
-      width: 140px;
+      width: 145px;
       cursor: pointer;
       transition: transform 0.2s ease;
       margin-top: 10px;
@@ -129,7 +134,7 @@
     }
 
     .play-btn-fallback {
-      background: #ff85a2; /* Rosa più chiaro e luminoso */
+      background: #ff85a2;
       color: white;
       border: none;
       padding: 14px 40px;
@@ -171,7 +176,7 @@
       grid-template-columns: 1fr 1fr;
       gap: 10px;
       width: 100%;
-      margin-bottom: 20px;
+      margin-bottom: 15px;
     }
 
     .answer-btn {
@@ -181,7 +186,7 @@
       padding: 14px 8px;
       font-size: 0.88rem;
       font-weight: 600;
-      color: #ff6584; /* Testo rosa chiaro ben visibile */
+      color: #ff6584;
       cursor: pointer;
       transition: all 0.2s;
       box-shadow: 0 3px 8px rgba(0,0,0,0.04);
@@ -192,18 +197,19 @@
       transform: translateY(-2px);
     }
 
-    /* Anya in Basso a Sinistra + Fumetto Staccato */
+    /* Anya in Basso a Sinistra (INGRANDITA) + Fumetto Staccato */
     .dialogue-wrapper {
       display: flex;
       align-items: flex-end;
-      gap: 12px;
+      gap: 10px;
       width: 100%;
-      margin-top: 10px;
+      margin-top: 5px;
     }
 
+    /* Anya Molto più grande che parla */
     .anya-avatar-standalone {
-      width: 95px;
-      height: 95px;
+      width: 130px;
+      height: 130px;
       object-fit: contain;
       background: transparent;
       flex-shrink: 0;
@@ -228,7 +234,7 @@
       content: '';
       position: absolute;
       left: -10px;
-      bottom: 15px;
+      bottom: 20px;
       border-width: 8px 10px 8px 0;
       border-style: solid;
       border-color: transparent #ffffff transparent transparent;
@@ -241,7 +247,7 @@
       content: '';
       position: absolute;
       left: -13px;
-      bottom: 14px;
+      bottom: 19px;
       border-width: 9px 11px 9px 0;
       border-style: solid;
       border-color: transparent #ffccd5 transparent transparent;
@@ -271,22 +277,27 @@
 </head>
 <body>
 
-  <!-- Sticker Arachide Sparsi nello Sfondo -->
+  <!-- Molti più Sticker Arachide Sparsi nello Sfondo -->
   <img src="Arachide.png" class="bg-peanut p-1" alt="Arachide BG">
   <img src="Arachide.png" class="bg-peanut p-2" alt="Arachide BG">
   <img src="Arachide.png" class="bg-peanut p-3" alt="Arachide BG">
   <img src="Arachide.png" class="bg-peanut p-4" alt="Arachide BG">
   <img src="Arachide.png" class="bg-peanut p-5" alt="Arachide BG">
+  <img src="Arachide.png" class="bg-peanut p-6" alt="Arachide BG">
+  <img src="Arachide.png" class="bg-peanut p-7" alt="Arachide BG">
+  <img src="Arachide.png" class="bg-peanut p-8" alt="Arachide BG">
+  <img src="Arachide.png" class="bg-peanut p-9" alt="Arachide BG">
+  <img src="Arachide.png" class="bg-peanut p-10" alt="Arachide BG">
 
   <div class="game-card">
 
     <!-- Tasto Musica -->
     <button class="music-btn" onclick="toggleAudio()">🎵</button>
 
-    <!-- Header Logo Grande e Centrato -->
+    <!-- Header Logo Molto Grande e Centrato -->
     <div class="header-logo">
       <img src="logo.png" class="logo-img" alt="Logo" onerror="this.style.display='none'; document.getElementById('alt-title').style.display='block';">
-      <h1 id="alt-title" style="display:none; color:#ff85a2; font-size:2.2rem;">Anya's Quiz 🥜</h1>
+      <h1 id="alt-title" style="display:none; color:#ff85a2; font-size:2.5rem;">Anya's Quiz 🥜</h1>
     </div>
 
     <!-- ================= SCHERMATA 1: START ================= -->
@@ -322,9 +333,9 @@
         <button class="answer-btn" onclick="checkAnswer(3)">D: <span id="opt-3"></span></button>
       </div>
 
-      <!-- Anya in Basso a Sinistra + Fumetto Staccato -->
+      <!-- Anya Ingrandita in Basso a Sinistra + Fumetto Staccato -->
       <div class="dialogue-wrapper">
-        <img id="anya-expression" src="anya_talking.png" class="anya-avatar-standalone" alt="Anya" onerror="this.src='https://via.placeholder.com/95/ffb6c1/ffffff?text=Anya'">
+        <img id="anya-expression" src="anya_talking.png" class="anya-avatar-standalone" alt="Anya" onerror="this.src='https://via.placeholder.com/130/ffb6c1/ffffff?text=Anya'">
         <div class="speech-bubble-standalone" id="question-text">
           Caricamento...
         </div>
@@ -497,4 +508,3 @@
   </script>
 </body>
 </html>
-
