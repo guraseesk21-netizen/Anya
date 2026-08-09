@@ -17,14 +17,14 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      background: url('1000072558.jpg') repeat center center;
+      background: url('0a2bf83cc0d4041dd33ebb5c83ed8666.jpg') repeat center center;
       background-size: 260px;
       padding: 20px;
       overflow-x: hidden;
       position: relative;
     }
 
-    /* Overlay per rendere lo sfondo un po' più morbido */
+    /* Overlay per ammorbidire lo sfondo */
     body::before {
       content: '';
       position: absolute;
@@ -49,23 +49,28 @@
       text-align: center;
     }
 
-    /* Sticker Decorativi attorno/sopra alla card */
+    /* Sticker Decorativi attorno alla card */
     .sticker {
       position: absolute;
       z-index: 15;
       pointer-events: none;
       filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.15));
       animation: float 3s ease-in-out infinite alternate;
+      border-radius: 50%;
     }
 
     .sticker-top-right {
       width: 75px;
+      height: 75px;
+      object-fit: cover;
       top: -35px;
       right: -20px;
     }
 
     .sticker-bottom-left {
       width: 80px;
+      height: 80px;
+      object-fit: cover;
       bottom: -30px;
       left: -25px;
       animation-delay: 1.5s;
@@ -146,7 +151,7 @@
       font-weight: 600;
     }
 
-    /* Controlli (Tasti) */
+    /* Controlli */
     .controls {
       display: flex;
       justify-content: center;
@@ -193,7 +198,6 @@
       transform: scale(1.05);
     }
 
-    /* Piccola decorazione peanuts */
     .peanut-badge {
       display: inline-block;
       margin-top: 15px;
@@ -211,13 +215,13 @@
   <!-- Card del Player -->
   <div class="player-card">
     
-    <!-- Sticker di Anya fluttuanti -->
-    <img src="1000072557.jpg" class="sticker sticker-top-right" alt="Mr Chimera Sticker">
-    <img src="1000072556.jpg" class="sticker sticker-bottom-left" alt="Anya Excited Sticker">
+    <!-- Sticker Decorativi -->
+    <img src="0c6d17c99428075236694e6db7dc5364.jpg" class="sticker sticker-top-right" alt="Anya Sticker 1">
+    <img src="3037d58795e47872235ce21b53c8d9fc.jpg" class="sticker sticker-bottom-left" alt="Anya Sticker 2">
 
     <!-- Copertina -->
     <div class="cover-container">
-      <img id="cover" src="1000072561.jpg" alt="Anya Cover">
+      <img id="cover" src="5b214622e3478e50a8f223cf8ccc1076.jpg" alt="Anya Cover">
     </div>
 
     <!-- Info Brano -->
@@ -245,29 +249,34 @@
     <div class="peanut-badge">Anya Likes Peanuts! 🥜</div>
   </div>
 
-  <!-- Elemento Audio -->
   <audio id="audio"></audio>
 
   <script>
-    // Lista delle canzoni
+    // Playlist di canzoni (Ricordati di rinominare i file MP3 quando li carichi su GitHub)
     const playlist = [
       {
         title: "Mixed Nuts",
-        artist: "Official HIGE DANdism (Opening 1)",
-        cover: "1000072561.jpg",
-        src: "canzone1.mp3"  // Sostituisci col nome del tuo file MP3
+        artist: "Official HIGE DANdism",
+        cover: "5b214622e3478e50a8f223cf8ccc1076.jpg",
+        src: "canzone1.mp3"
+      },
+      {
+        title: "Souvenir",
+        artist: "BUMP OF CHICKEN",
+        cover: "bec9f3b0f76b2e25f5d01423abcd30d8.jpg",
+        src: "canzone2.mp3"
       },
       {
         title: "Kiseki",
         artist: "SPY x FAMILY OST",
-        cover: "1000072560.jpg",
-        src: "canzone2.mp3"  // Sostituisci col nome del tuo file MP3
+        cover: "d0a517642140232317871409ae0ea77d.jpg",
+        src: "canzone3.mp3"
       },
       {
-        title: "Souvenir",
-        artist: "BUMP OF CHICKEN (Opening 2)",
-        cover: "1000072559.jpg",
-        src: "canzone3.mp3"  // Sostituisci col nome del tuo file MP3
+        title: "Comedy",
+        artist: "Gen Hoshino",
+        cover: "d324bd5f968e5c06fa3a748b2d73ae09.jpg",
+        src: "canzone4.mp3"
       }
     ];
 
@@ -286,7 +295,6 @@
     const currentTimeEl = document.getElementById('current-time');
     const durationEl = document.getElementById('duration');
 
-    // Carica Canzone
     function loadSong(song) {
       title.textContent = song.title;
       artist.textContent = song.artist;
@@ -294,17 +302,13 @@
       audio.src = song.src;
     }
 
-    // Play Canzone
     function playSong() {
       isPlaying = true;
       playBtn.textContent = '⏸';
       cover.classList.add('playing');
-      audio.play().catch(() => {
-        // Gestione se l'audio non è ancora stato caricato
-      });
+      audio.play().catch(() => {});
     }
 
-    // Pause Canzone
     function pauseSong() {
       isPlaying = false;
       playBtn.textContent = '▶';
@@ -312,33 +316,28 @@
       audio.pause();
     }
 
-    // Toggle Play/Pause
     playBtn.addEventListener('click', () => {
       isPlaying ? pauseSong() : playSong();
     });
 
-    // Prossima Canzone
     nextBtn.addEventListener('click', () => {
       songIndex = (songIndex + 1) % playlist.length;
       loadSong(playlist[songIndex]);
       playSong();
     });
 
-    // Canzone Precedente
     prevBtn.addEventListener('click', () => {
       songIndex = (songIndex - 1 + playlist.length) % playlist.length;
       loadSong(playlist[songIndex]);
       playSong();
     });
 
-    // Aggiorna Barra di Avanzamento
     audio.addEventListener('timeupdate', (e) => {
       const { duration, currentTime } = e.srcElement;
       if (duration) {
         const progressPercent = (currentTime / duration) * 100;
         progressFill.style.width = `${progressPercent}%`;
 
-        // Formatta Tempo
         const currentMin = Math.floor(currentTime / 60);
         const currentSec = Math.floor(currentTime % 60);
         currentTimeEl.textContent = `${currentMin}:${currentSec < 10 ? '0' : ''}${currentSec}`;
@@ -349,7 +348,6 @@
       }
     });
 
-    // Click sulla barra per cambiare punto della canzone
     progressBg.addEventListener('click', (e) => {
       const width = progressBg.clientWidth;
       const clickX = e.offsetX;
@@ -359,16 +357,13 @@
       }
     });
 
-    // Passa alla prossima quando finisce
     audio.addEventListener('ended', () => {
       songIndex = (songIndex + 1) % playlist.length;
       loadSong(playlist[songIndex]);
       playSong();
     });
 
-    // Carica la prima canzone all'avvio
     loadSong(playlist[songIndex]);
   </script>
 </body>
 </html>
-
