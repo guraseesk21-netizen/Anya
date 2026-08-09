@@ -17,11 +17,11 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      background: #ffebee; /* Rosa molto chiaro in tinta unita (senza puntini) */
+      background: #ffebee; /* Rosa chiaro tinta unita */
       padding: 15px;
     }
 
-    /* Container Principale Trasparente */
+    /* Container Principale */
     .game-card {
       position: relative;
       background: transparent;
@@ -54,22 +54,32 @@
       box-shadow: 0 3px 8px rgba(220, 120, 150, 0.2);
     }
 
-    /* Header Logo Grande e Senza Sfondi */
+    /* Header Logo con Arachide Decorativa */
     .header-logo {
       width: 100%;
       text-align: center;
       margin-top: 15px;
       margin-bottom: 10px;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
-    .header-logo img {
-      width: 85%;
-      max-width: 300px;
-      max-height: 150px;
+    .header-logo img.logo-img {
+      width: 80%;
+      max-width: 280px;
+      max-height: 140px;
       object-fit: contain;
       background: transparent;
-      border: none;
-      box-shadow: none;
+    }
+
+    /* Piccola arachide decorativa accanto al logo */
+    .peanut-icon-decor {
+      width: 35px;
+      height: auto;
+      object-fit: contain;
+      margin-left: 8px;
     }
 
     /* Pagine */
@@ -87,15 +97,22 @@
       display: flex;
     }
 
+    /* Anya Vestita da Arachide (Schermata Principale) */
+    .anya-peanut-hero {
+      width: 170px;
+      height: auto;
+      object-fit: contain;
+      margin: 15px 0;
+      background: transparent;
+    }
+
     /* Tasto Play Grafico */
     .play-btn-img {
       width: 140px;
       cursor: pointer;
       transition: transform 0.2s ease;
-      margin-top: 25px;
+      margin-top: 10px;
       background: transparent;
-      border: none;
-      box-shadow: none;
     }
 
     .play-btn-img:hover {
@@ -126,16 +143,11 @@
       box-shadow: 0 4px 10px rgba(0,0,0,0.05);
     }
 
-    /* Personaggio Anya Intro (Senza Cerchio/Sfondo) */
     .anya-character {
       width: 160px;
       height: auto;
       max-height: 180px;
       object-fit: contain;
-      background: transparent;
-      border: none;
-      border-radius: 0;
-      box-shadow: none;
       margin-bottom: 15px;
     }
 
@@ -177,7 +189,7 @@
       margin-bottom: 15px;
     }
 
-    /* Anya staccata dal fumetto in basso a sinistra */
+    /* Anya in Basso a Sinistra + Fumetto Staccato */
     .dialogue-wrapper {
       display: flex;
       align-items: flex-end;
@@ -186,18 +198,14 @@
       margin-top: 10px;
     }
 
-    /* Anya in basso a sinistra, senza sfondi/bordi */
     .anya-avatar-standalone {
       width: 95px;
       height: 95px;
       object-fit: contain;
       background: transparent;
-      border: none;
-      box-shadow: none;
       flex-shrink: 0;
     }
 
-    /* Fumetto staccato con la freccetta/coda verso Anya */
     .speech-bubble-standalone {
       position: relative;
       background: #ffffff;
@@ -213,7 +221,6 @@
       margin-bottom: 10px;
     }
 
-    /* Coda/Freccetta del Fumetto */
     .speech-bubble-standalone::after {
       content: '';
       position: absolute;
@@ -247,9 +254,6 @@
       max-height: 200px;
       object-fit: contain;
       background: transparent;
-      border: none;
-      border-radius: 0;
-      box-shadow: none;
       margin: 15px 0;
     }
 
@@ -259,8 +263,6 @@
       height: auto;
       object-fit: contain;
       background: transparent;
-      border: none;
-      box-shadow: none;
       margin: 15px 0;
     }
   </style>
@@ -272,18 +274,23 @@
     <!-- Tasto Musica -->
     <button class="music-btn" onclick="toggleAudio()">🎵</button>
 
-    <!-- Logo / Titolo -->
+    <!-- Header Logo + Icona Arachide -->
     <div class="header-logo">
-      <img src="logo.png" alt="Logo" onerror="this.style.display='none'; document.getElementById('alt-title').style.display='block';">
+      <img src="logo.png" class="logo-img" alt="Logo" onerror="this.style.display='none'; document.getElementById('alt-title').style.display='block';">
+      <img src="Arachide.png" class="peanut-icon-decor" alt="Arachide Decorativa">
       <h1 id="alt-title" style="display:none; color:#ff5e83; font-size:2rem;">Anya's Quiz 🥜</h1>
     </div>
 
     <!-- ================= SCHERMATA 1: START ================= -->
     <div id="screen-start" class="screen active">
-      <p style="color: #777; font-size: 0.95rem; margin-top: 30px; font-weight: 500;">Anya's Mission: Peanuts Quest!</p>
+      <p style="color: #777; font-size: 0.95rem; font-weight: 500;">Anya's Mission: Peanuts Quest!</p>
       
+      <!-- Anya Vestita da Arachide al Centro -->
+      <img src="Anya_aracidi.png" class="anya-peanut-hero" alt="Anya Arachide">
+
+      <!-- Tasto Play -->
       <img src="play_button.png" class="play-btn-img" alt="Play" onclick="startIntro()" onerror="this.style.display='none'; document.getElementById('fallback-play').style.display='block';">
-      <button id="fallback-play" class="play-btn-fallback" style="display:none; margin-top:25px;" onclick="startIntro()">PLAY ▶</button>
+      <button id="fallback-play" class="play-btn-fallback" style="display:none; margin-top:15px;" onclick="startIntro()">PLAY ▶</button>
     </div>
 
     <!-- ================= SCHERMATA 2: INTRO ================= -->
@@ -342,7 +349,8 @@
       <h2 style="color: #ff5e83;">Vittoria! 🎉</h2>
       <p style="font-size: 0.9rem; color: #555; margin-top: 5px;">Hai superato tutte le 10 domande!</p>
       
-      <img src="arachidi.png" class="reward-img" alt="Arachidi" onerror="this.src='https://via.placeholder.com/150/fef3c7/d97706?text=🥜+Arachidi!'">
+      <!-- Immagine dell'arachide come premio finale -->
+      <img src="Arachide.png" class="reward-img" alt="Arachide Premio">
       
       <p style="font-size: 0.95rem; font-weight: bold; color: #d97706;">Hai vinto un pacchetto di arachidi!</p>
       
@@ -359,7 +367,7 @@
         question: "Qual è il cibo preferito in assoluto di Anya?",
         options: ["Carote", "Arachidi 🥜", "Cioccolato", "Torta"],
         correct: 1,
-        image: "img_arachidi.png"
+        image: "Arachide.png"
       },
       {
         question: "Come si chiama il grande cane bianco della famiglia Forger?",
@@ -389,7 +397,7 @@
         question: "Di che colore sono i capelli di Anya?",
         options: ["Biondi", "Rosa 💖", "Neri", "Castani"],
         correct: 1,
-        image: "img_capelli_rosa.png"
+        image: "Capelli.png" /* Immagine aggiornata con la tua foto! */
       },
       {
         question: "Cosa vuole collezionare Anya a scuola per rendere fiero Loid?",
