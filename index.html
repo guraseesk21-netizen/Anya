@@ -2,7 +2,7 @@
 <html lang="it">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Anya's Quiz 🥜</title>
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@700&display=swap" rel="stylesheet">
   <style>
@@ -10,12 +10,13 @@
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      font-family: 'Quicksand', sans-serif;
+      font-family: 'Quicksand', sans-serif !important;
     }
 
     html, body {
       height: 100%;
-      overflow: hidden;
+      width: 100%;
+      overflow: hidden !important;
       background: #ffebee;
     }
 
@@ -26,73 +27,27 @@
       padding: 5px;
     }
 
-    /* Container principale */
     .game-card {
       width: 100%;
-      max-width: 400px;
-      height: 98vh;
+      max-width: 420px;
+      height: 98dvh;
       display: flex;
       flex-direction: column;
       align-items: center;
+      justify-content: flex-start;
       position: relative;
     }
 
-    /* BARRA SUPERIORE (Logo + Musica) */
-    .top-bar {
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin-top: 5px;
-      position: relative;
-    }
-
-    /* LOGO INGRANDITO */
-    .header-logo {
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-bottom: 10px;
-    }
-
-    .header-logo img.logo-img {
-      width: 95%; /* Quasi tutta la larghezza */
-      max-width: 500px;
-      height: auto;
-      object-fit: contain;
-    }
-
-    /* BOTTONE MUSICA CENTRATO */
-    .music-btn {
-      background: #ff85a2;
-      color: #ffffff;
-      border: 3px solid #ffffff;
-      border-radius: 50%;
-      width: 45px;
-      height: 45px;
-      font-size: 1.5rem;
-      font-weight: bold;
-      cursor: pointer;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      box-shadow: 0 4px 10px rgba(255, 133, 162, 0.5);
-      margin-bottom: 15px; /* Spazio sotto */
-    }
-
-    /* RESTO DEL LAYOUT */
     .screen {
       width: 100%;
       display: none;
       flex-direction: column;
       align-items: center;
-      flex-grow: 1;
       justify-content: center;
+      flex-grow: 1;
     }
     .screen.active { display: flex; }
 
-    .anya-peanut-hero { width: 160px; height: auto; }
     .play-btn-fallback {
       background: #ff9ebb;
       color: white;
@@ -103,34 +58,23 @@
       border-radius: 40px;
       cursor: pointer;
       box-shadow: 0 5px 15px rgba(255, 158, 187, 0.4);
-      margin-top: 20px;
-    }
-
-    .intro-text-box {
-      background: rgba(255, 255, 255, 0.95);
-      border: 3px solid #ffccd5;
-      border-radius: 20px;
-      padding: 15px;
-      font-size: 1rem;
-      color: #555;
-      margin: 15px;
-      text-align: center;
+      margin-top: 15px;
     }
 
     .answers-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      width: 90%;
-      margin-bottom: 20px;
+      gap: 10px;
+      width: 95%;
+      margin-bottom: 15px;
     }
 
     .answer-btn {
       background: #ffffff;
       border: 3px solid #ffccd5;
       border-radius: 15px;
-      padding: 15px 5px;
-      font-size: 0.9rem;
+      padding: 12px 5px;
+      font-size: 0.85rem;
       font-weight: 700;
       color: #ff6584;
       cursor: pointer;
@@ -139,20 +83,18 @@
     .dialogue-wrapper {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 8px;
       width: 95%;
     }
 
-    .anya-avatar-standalone { width: 110px; height: 110px; }
-    
     .speech-bubble-standalone {
       background: #ffffff;
       border: 3px solid #ffccd5;
       border-radius: 15px;
-      padding: 12px;
-      font-size: 0.95rem;
+      padding: 10px;
+      font-size: 0.88rem;
       color: #444;
-      line-height: 1.4;
+      line-height: 1.3;
       flex-grow: 1;
     }
   </style>
@@ -161,25 +103,29 @@
 
   <div class="game-card">
 
-    <div class="top-bar">
-      <!-- LOGO -->
-      <div class="header-logo">
-        <img src="logo.png" class="logo-img" alt="Logo" onerror="this.style.display='none'; document.getElementById('alt-title').style.display='block';">
+    <!-- CONTENITORE LOGO + BOTTONE CON STILI FORZATI -->
+    <div style="width: 100%; display: flex; flex-direction: column; align-items: center; margin-top: 5px;">
+      
+      <!-- LOGO ENORME -->
+      <div style="width: 100%; text-align: center; margin-bottom: 5px;">
+        <img src="logo.png?v=2" alt="Logo" style="width: 100% !important; max-width: 380px !important; height: auto !important; max-height: 160px !important; object-fit: contain !important; display: block; margin: 0 auto;" onerror="this.style.display='none'; document.getElementById('alt-title').style.display='block';">
         <h1 id="alt-title" style="display:none; color:#ff85a2; font-size:2.5rem;">Anya's Quiz</h1>
       </div>
-      <!-- MUSICA CENTRATA -->
-      <button class="music-btn" id="music-toggle-btn" onclick="toggleAudio()">♪</button>
+
+      <!-- BOTTONE NOTA MUSICALE PERFETTAMENTE CENTRATO -->
+      <button id="music-toggle-btn" onclick="toggleAudio()" style="background: #ff85a2 !important; color: #ffffff !important; border: 3px solid #ffffff !important; border-radius: 50% !important; width: 48px !important; height: 48px !important; font-size: 1.6rem !important; font-weight: bold !important; cursor: pointer; display: flex !important; justify-content: center !important; align-items: center !important; line-height: 1 !important; padding: 0 !important; margin: 5px auto 10px auto !important; box-shadow: 0 4px 10px rgba(255, 133, 162, 0.5);">♪</button>
+      
     </div>
 
     <!-- START -->
     <div id="screen-start" class="screen active">
-      <img src="Anya_aracidi.png" class="anya-peanut-hero" alt="Anya">
+      <img src="Anya_aracidi.png" style="width: 140px; height: auto;" alt="Anya">
       <button class="play-btn-fallback" onclick="startIntro()">INIZIA</button>
     </div>
 
     <!-- INTRO -->
     <div id="screen-intro" class="screen">
-      <div class="intro-text-box">
+      <div style="background: rgba(255, 255, 255, 0.95); border: 3px solid #ffccd5; border-radius: 20px; padding: 15px; font-size: 0.95rem; color: #555; text-align: center; margin: 10px;">
         Waku Waku! Aiuta Anya a rispondere correttamente a tutte e 10 le domande per conquistare il premio finale! 🥜
       </div>
       <button class="play-btn-fallback" onclick="startGame()">Via!</button>
@@ -194,16 +140,17 @@
         <button class="answer-btn" onclick="checkAnswer(3)">D: <span id="opt-3"></span></button>
       </div>
       <div class="dialogue-wrapper">
-        <img id="anya-expression" src="anya_talking.png" class="anya-avatar-standalone" alt="Anya">
+        <img id="anya-expression" src="anya_talking.png" style="width: 100px; height: 100px; object-fit: contain;" alt="Anya">
         <div class="speech-bubble-standalone" id="question-text">Caricamento...</div>
       </div>
     </div>
 
-    <!-- RISULTATI -->
+    <!-- VITTORIA -->
     <div id="screen-win" class="screen">
       <h2 style="color: #ff85a2;">Vittoria! 🎉</h2>
       <button class="play-btn-fallback" onclick="location.reload()">Rigioca</button>
     </div>
+
   </div>
 
   <audio id="bg-music" src="relax_music.mp3" loop></audio>
@@ -242,10 +189,9 @@
       if(idx === questions[currentQuestion].correct) {
         currentQuestion++;
         if(currentQuestion < questions.length) loadQuestion();
-        else document.getElementById('screen-quiz').classList.remove('active'), document.getElementById('screen-win').classList.add('active');
+        else { document.getElementById('screen-quiz').classList.remove('active'); document.getElementById('screen-win').classList.add('active'); }
       } else alert("Riprova! 🥜");
     }
   </script>
 </body>
 </html>
-
