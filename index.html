@@ -246,7 +246,7 @@
     }
 
     /* Immagini di feedback */
-    .feedback-img, .reward-img {
+    .feedback-img {
       width: 160px;
       height: auto;
       max-height: 180px;
@@ -255,6 +255,25 @@
       background: transparent;
       border: none;
       border-radius: 12px;
+    }
+
+    /* Layout per le due immagini trasparenti nella finale */
+    .final-reward-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+      margin: 10px 0;
+      width: 100%;
+    }
+
+    .final-reward-container img {
+      width: 130px;
+      height: auto;
+      max-height: 140px;
+      object-fit: contain;
+      background: transparent;
+      border: none;
     }
   </style>
 </head>
@@ -329,11 +348,17 @@
       <button class="play-btn-fallback" style="font-size: 0.85rem; padding: 8px 20px; margin-top: 5px;" onclick="retryQuestion()">Riprova</button>
     </div>
 
-    <!-- ================= SCHERMATA 6: VITTORIA FINALE ================= -->
+    <!-- ================= SCHERMATA 6: VITTORIA FINALE (CON ENTRAMBE LE IMMAGINI) ================= -->
     <div id="screen-win" class="screen">
       <h3 style="color: #ff85a2;">Vittoria! 🎉</h3>
       <p style="font-size: 0.85rem; color: #555; margin-top: 3px;">Hai superato tutte le 10 domande!</p>
-      <img src="Anya_fine.gif" class="reward-img" alt="Anya Festeggia" onerror="this.src='Arachide.png';">
+      
+      <!-- CONTENITORE PER LE 2 IMMAGINI AFFIANCATE -->
+      <div class="final-reward-container">
+        <img src="Anya_fine.gif" alt="Anya Festeggia" onerror="this.style.display='none';">
+        <img src="Premio.jpg" alt="Pacchetto Arachidi" onerror="this.src='Arachide.png';">
+      </div>
+
       <p style="font-size: 0.9rem; font-weight: bold; color: #d97706;">Hai vinto il premio!</p>
       <button class="play-btn-fallback" style="margin-top: 10px; font-size: 0.85rem; padding: 8px 20px;" onclick="goToScreen('screen-start')">Rigioca</button>
     </div>
