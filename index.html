@@ -289,7 +289,7 @@
     <div id="screen-correct" class="screen">
       <h3 style="color: #4caf50;">Risposta Corretta! ✨</h3>
       <!-- IMMAGINE DINAMICA DEL PERSONAGGIO/RISPOSTA -->
-      <img id="correct-char-img" src="" class="feedback-img" alt="Personaggio">
+      <img id="correct-char-img" src="" class="feedback-img" alt="Personaggio" onerror="this.src='anya_happy.png';">
       <p style="font-size: 0.85rem; color: #555; margin-bottom: 10px;">Ottimo lavoro!</p>
       <button class="play-btn-fallback" style="font-size: 0.85rem; padding: 8px 20px;" onclick="nextQuestion()">Prossima</button>
     </div>
@@ -308,7 +308,7 @@
       <h3 style="color: #ff85a2;">Vittoria! 🎉</h3>
       <p style="font-size: 0.85rem; color: #555; margin-top: 3px;">Hai superato tutte le 10 domande!</p>
       <!-- IMMAGINE PREMIO FINALE (Premio.jpg) -->
-      <img src="Premio.jpg" class="reward-img" alt="Premio Finale" onerror="this.src='Arachide.png'">
+      <img src="Premio.jpg" class="reward-img" alt="Premio Finale" onerror="this.src='Arachide.png';">
       <p style="font-size: 0.9rem; font-weight: bold; color: #d97706;">Hai vinto il premio!</p>
       <button class="play-btn-fallback" style="margin-top: 10px; font-size: 0.85rem; padding: 8px 20px;" onclick="goToScreen('screen-start')">Rigioca</button>
     </div>
@@ -330,7 +330,7 @@
       { question: "Cosa vuole collezionare Anya?", options: ["Stelle Stella ⭐", "Medaglie", "Punti premio", "Peluche"], correct: 0, image: "img_stella.png" },
       { question: "Migliore amica di Anya?", options: ["Yor", "Fiona", "Becky 🎀", "Camilla"], correct: 2, image: "Friend.jpg" },
       { question: "Cosa dice Anya quando è entusiasta?", options: ["Nani?!", "Waku Waku! ✨", "Sugoi!", "Baka!"], correct: 1, image: "img_wakuwaku.png" },
-      { question: "Come chiama Anya suo padre?", options: ["Papà", "Chichi 👨‍👧", "Loid", "Signore"], correct: 1, image: "Chichi.jpg" } // IMMAGINE CHICHI.JPG
+      { question: "Come chiama Anya suo padre?", options: ["Papà", "Chichi 👨‍👧", "Loid", "Signore"], correct: 1, image: "Chichi.jpg" }
     ];
 
     const defaultHappyImage = "anya_happy.png";
@@ -388,8 +388,6 @@
       if(selectedIndex === q.correct) {
         const feedbackImg = document.getElementById('correct-char-img');
         feedbackImg.src = q.image ? q.image : defaultHappyImage;
-        feedbackImg.onerror = function() { this.src = defaultHappyImage; };
-        
         goToScreen('screen-correct');
       } else {
         goToScreen('screen-wrong');
