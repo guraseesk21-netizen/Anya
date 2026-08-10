@@ -246,33 +246,35 @@
       border-color: transparent #ffffff transparent transparent;
     }
 
-    /* IMMAGINI DI FEEDBACK (Risposta Corretta / Sbagliata) - ANGOLI MORBIDI */
+    /* IMMAGINI DI FEEDBACK (Risposta Corretta / Sbagliata) - ANGOLI MORBIDI FORZATI */
     .feedback-img {
       width: 85%;
       max-width: 250px;
       height: auto;
       max-height: 220px;
-      object-fit: contain;
+      object-fit: cover;
       margin: 12px auto;
       display: block;
       background: transparent;
       border: none;
-      border-radius: 14px;
+      border-radius: 18px !important;
+      overflow: hidden !important;
     }
 
-    /* IMMAGINI SCHERMATA START & INTRO - ANGOLI MORBIDI */
+    /* IMMAGINI SCHERMATA START & INTRO - ANGOLI MORBIDI FORZATI */
     .start-intro-img {
       width: 75%;
       max-width: 210px;
       height: auto;
       max-height: 210px;
-      object-fit: contain;
+      object-fit: cover;
       margin: 10px auto;
       display: block;
-      border-radius: 14px;
+      border-radius: 18px !important;
+      overflow: hidden !important;
     }
 
-    /* CONTENITORE IMMAGINI FINALI - ANGOLI MORBIDI */
+    /* CONTENITORE IMMAGINI FINALI - ANGOLI MORBIDI FORZATI */
     .win-images-container {
       display: flex;
       flex-direction: column;
@@ -288,8 +290,9 @@
       max-width: 220px;
       height: auto;
       max-height: 160px;
-      object-fit: contain;
-      border-radius: 14px;
+      object-fit: cover;
+      border-radius: 18px !important;
+      overflow: hidden !important;
       display: block;
     }
 
@@ -298,8 +301,9 @@
       max-width: 240px;
       height: auto;
       max-height: 160px;
-      object-fit: contain;
-      border-radius: 14px;
+      object-fit: cover;
+      border-radius: 18px !important;
+      overflow: hidden !important;
       display: block;
     }
   </style>
@@ -339,7 +343,7 @@
     <div id="screen-intro" class="screen">
       <img src="Anya1.png" class="start-intro-img" alt="Anya 1" onerror="this.src='anya_happy.png';">
       <div class="intro-text-box">
-        Waku Waku! Aiuta Anya a rispondere correttamente a tutte le 10 domande per conquistare il premio finale!
+        Waku Waku! Aiuta Anya a rispondere correttamente a tutte le 10 domande per conquistarne il premio finale!
       </div>
       <button class="play-btn-fallback" style="font-size: 0.95rem; padding: 8px 24px;" onclick="startGame()">Via!</button>
     </div>
