@@ -257,12 +257,12 @@
       border-radius: 12px;
     }
 
-    /* Layout per le due immagini trasparenti nella finale */
+    /* Layout per le due immagini nella finale */
     .final-reward-container {
       display: flex;
       justify-content: center;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
       margin: 10px 0;
       width: 100%;
     }
@@ -274,6 +274,7 @@
       object-fit: contain;
       background: transparent;
       border: none;
+      border-radius: 8px;
     }
   </style>
 </head>
@@ -348,15 +349,15 @@
       <button class="play-btn-fallback" style="font-size: 0.85rem; padding: 8px 20px; margin-top: 5px;" onclick="retryQuestion()">Riprova</button>
     </div>
 
-    <!-- ================= SCHERMATA 6: VITTORIA FINALE (CON ENTRAMBE LE IMMAGINI) ================= -->
+    <!-- ================= SCHERMATA 6: VITTORIA FINALE ================= -->
     <div id="screen-win" class="screen">
       <h3 style="color: #ff85a2;">Vittoria! 🎉</h3>
       <p style="font-size: 0.85rem; color: #555; margin-top: 3px;">Hai superato tutte le 10 domande!</p>
       
-      <!-- CONTENITORE PER LE 2 IMMAGINI AFFIANCATE -->
+      <!-- CONTENITORE PER LE 2 IMMAGINI FINALI -->
       <div class="final-reward-container">
-        <img src="Anya_fine.gif" alt="Anya Festeggia" onerror="this.style.display='none';">
-        <img src="Premio.jpg" alt="Pacchetto Arachidi" onerror="this.src='Arachide.png';">
+        <img src="d0a517642140232317871409ae0ea77d.jpg" alt="Immagine finale" onerror="this.style.display='none';">
+        <img src="Anya_fine.gif" alt="Anya Festeggia" onerror="this.src='Arachide.png';">
       </div>
 
       <p style="font-size: 0.9rem; font-weight: bold; color: #d97706;">Hai vinto il premio!</p>
@@ -370,7 +371,7 @@
 
   <script>
     const questions = [
-      { question: "Qual è il cibo preferito di Anya?", options: ["Carote", "Arachidi", "Cioccolato", "Torta"], correct: 1, image: "d0a517642140232317871409ae0ea77d.jpg" },
+      { question: "Qual è il cibo preferito di Anya?", options: ["Carote", "Arachidi", "Cioccolato", "Torta"], correct: 1, image: "Premio.jpg" },
       { question: "Come si chiama il cane dei Forger?", options: ["Bond", "Max", "Peanut", "Loid"], correct: 0, image: "Dog.jpg" },
       { question: "Qual è il potere di Anya?", options: ["Super forza", "Sa volare", "Legge la mente", "Invisibilità"], correct: 2, image: "Poteri.jpg" },
       { question: "Come si chiama la scuola di Anya?", options: ["UA Academy", "Eden Academy", "Ouka Academy", "PK Academy"], correct: 1, image: "Eden_academy.jpg" },
