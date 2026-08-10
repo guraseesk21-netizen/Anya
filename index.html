@@ -259,9 +259,10 @@
       <button class="play-btn-fallback" onclick="startIntro()">INIZIA</button>
     </div>
 
-    <!-- ================= SCHERMATA 2: INTRO ================= -->
+    <!-- ================= SCHERMATA 2: INTRO (Spiegazione Gioco) ================= -->
     <div id="screen-intro" class="screen">
-      <img src="anya_happy.png" style="width: 130px; height: auto;" alt="Anya" onerror="this.src='https://via.placeholder.com/130/ffb6c1/ffffff?text=Anya'">
+      <!-- Immagine Anya1.png inserita qui -->
+      <img src="Anya1.png" style="width: 130px; height: auto;" alt="Anya 1" onerror="this.src='anya_happy.png';">
       <div class="intro-text-box">
         Waku Waku! Aiuta Anya a rispondere correttamente a tutte e 10 le domande per conquistare il premio finale! 🥜
       </div>
@@ -319,21 +320,21 @@
   <audio id="bg-music" src="relax_music.mp3" loop></audio>
 
   <script>
-    // DATABASE DOMANDE CON IMMAGINI SPECIFICHE
+    // DATABASE DOMANDE CON IMMAGINI AGGIORNATE DAI TUOI FILE
     const questions = [
       { question: "Qual è il cibo preferito di Anya?", options: ["Carote", "Arachidi 🥜", "Cioccolato", "Torta"], correct: 1, image: "Arachide.png" },
       { question: "Come si chiama il cane dei Forger?", options: ["Bond 🐶", "Max", "Peanut", "Loid"], correct: 0, image: "Dog.jpg" },
       { question: "Qual è il potere di Anya?", options: ["Super forza", "Sa volare", "Legge la mente 🧠", "Invisibilità"], correct: 2, image: "Poteri.jpg" },
-      { question: "Come si chiama la scuola di Anya?", options: ["UA Academy", "Eden Academy 🏫", "Ouka Academy", "PK Academy"], correct: 1, image: "Eden.png" },
+      { question: "Come si chiama la scuola di Anya?", options: ["UA Academy", "Eden Academy 🏫", "Ouka Academy", "PK Academy"], correct: 1, image: "Eden_academy.jpg" }, // EDEN_ACADEMY.JPG
       { question: "Nome in codice di Loid?", options: ["Thorn Princess", "Scruffy", "Twilight 🕵️‍♂️", "Daybreak"], correct: 2, image: "Spy.jpg" },
       { question: "Colore capelli di Anya?", options: ["Biondi", "Rosa 💖", "Neri", "Castani"], correct: 1, image: "Capelli.png" },
-      { question: "Cosa vuole collezionare Anya?", options: ["Stelle Stella ⭐", "Medaglie", "Punti premio", "Peluche"], correct: 0, image: "img_stella.png" },
+      { question: "Cosa vuole collezionare Anya?", options: ["Stelle Stella ⭐", "Medaglie", "Punti premio", "Peluche"], correct: 0, image: "Stella.png" }, // STELLA.PNG
       { question: "Migliore amica di Anya?", options: ["Yor", "Fiona", "Becky 🎀", "Camilla"], correct: 2, image: "Friend.jpg" },
-      { question: "Cosa dice Anya quando è entusiasta?", options: ["Nani?!", "Waku Waku! ✨", "Sugoi!", "Baka!"], correct: 1, image: "img_wakuwaku.png" },
+      { question: "Cosa dice Anya quando è entusiasta?", options: ["Nani?!", "Waku Waku! ✨", "Sugoi!", "Baka!"], correct: 1, image: "anya-wakuwaku.png" }, // ANYA-WAKUWAKU.PNG
       { question: "Come chiama Anya suo padre?", options: ["Papà", "Chichi 👨‍👧", "Loid", "Signore"], correct: 1, image: "Chichi.jpg" }
     ];
 
-    const defaultHappyImage = "anya_happy.png";
+    const defaultHappyImage = "Anya1.png";
 
     let currentQuestion = 0;
     let isMusicPlaying = false;
