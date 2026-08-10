@@ -246,7 +246,7 @@
       border-color: transparent #ffffff transparent transparent;
     }
 
-    /* PRIMA IMMAGINI INIZIALE (Anya Arachidi) - SENZA ARROTONDAMENTO */
+    /* IMMAGINE START/INTRO - NATURALE SENZA ARROTONDAMENTO */
     .start-intro-img {
       width: 75%;
       max-width: 210px;
@@ -258,7 +258,7 @@
       border-radius: 0 !important;
     }
 
-    /* IMMAGINI DELLE RISPOSTE: MANTERRANO DIMENSIONI NATURALI (CON TAIN) + ANGOLI ARROTONDATI */
+    /* IMMAGINE DI FEEDBACK BASE (Senza angoli arrotondati) */
     .feedback-img {
       max-width: 250px;
       max-height: 220px;
@@ -269,11 +269,16 @@
       display: block;
       background: transparent;
       border: none;
+      border-radius: 0 !important;
+    }
+
+    /* CLASSE SPECIFICA PER LE IMMAGINI EVIDENZIATE IN VERDE (ANGOLI ARROTONDATI) */
+    .rounded-img {
       border-radius: 18px !important;
       overflow: hidden !important;
     }
 
-    /* CONTENITORE IMMAGINI FINALI - DIMENSIONI NATURALI CON ANGOLI ARROTONDATI */
+    /* CONTENITORE IMMAGINI FINALI (ENTRAMBE EVIDENZIATE IN VERDE) */
     .win-images-container {
       display: flex;
       flex-direction: column;
@@ -329,7 +334,7 @@
 
     <!-- ================= SCHERMATA 2: INTRO ================= -->
     <div id="screen-intro" class="screen">
-      <img src="Anya1.png" class="feedback-img" alt="Anya 1">
+      <img src="Anya1.png" class="start-intro-img" alt="Anya 1">
       <div class="intro-text-box">
         Waku Waku! Aiuta Anya a rispondere correttamente a tutte le 10 domande per conquistarne il premio finale!
       </div>
@@ -373,7 +378,7 @@
       <h3 style="color: #ff85a2; font-size: 1.3rem;">WAKU WAKU!</h3>
       <p style="font-size: 0.85rem; color: #555; margin-top: 2px;">Hai aiutato Anya a completare il quiz!</p>
       
-      <!-- IMMAGINI SOVRAPPOSTE IN VERTICALE -->
+      <!-- IMMAGINI SOVRAPPOSTE IN VERTICALE (ENTRAMBE EVIDENZIATE IN VERDE -> ARROTONDATE) -->
       <div class="win-images-container">
         <img src="Premio.jpg" class="win-img-top" alt="Pacchetto Arachidi">
         <img src="Anya_fine.gif" class="win-img-bottom" alt="Anya Festeggia">
@@ -389,17 +394,21 @@
   <audio id="bg-music" src="Song.mp3" loop autoplay></audio>
 
   <script>
+    /*
+      isRounded: true  -> Immagine evidenziata in verde (Angoli arrotondati)
+      isRounded: false -> Altre immagini (Angoli normali)
+    */
     const questions = [
-      { question: "Qual è il cibo preferito di Anya?", options: ["Carote", "Arachidi", "Cioccolato", "Torta"], correct: 1, image: "d0a517642140232317871409ae0ea77d.jpg" },
-      { question: "Come si chiama il cane dei Forger?", options: ["Bond", "Max", "Peanut", "Loid"], correct: 0, image: "Dog.jpg" },
-      { question: "Qual è il potere di Anya?", options: ["Super forza", "Sa volare", "Legge la mente", "Invisibilità"], correct: 2, image: "Poteri.jpg" },
-      { question: "Come si chiama la scuola di Anya?", options: ["UA Academy", "Eden Academy", "Ouka Academy", "PK Academy"], correct: 1, image: "Eden_academy.jpg" },
-      { question: "Nome in codice di Loid?", options: ["Thorn Princess", "Scruffy", "Twilight", "Daybreak"], correct: 2, image: "Spy.jpg" },
-      { question: "Colore capelli di Anya?", options: ["Biondi", "Rosa", "Neri", "Castani"], correct: 1, image: "Capelli.png" },
-      { question: "Cosa vuole collezionare Anya?", options: ["Stelle Stella", "Medaglie", "Punti premio", "Peluche"], correct: 0, image: "Stella.png" },
-      { question: "Migliore amica di Anya?", options: ["Yor", "Fiona", "Becky", "Camilla"], correct: 2, image: "Friend.jpg" },
-      { question: "Cosa dice Anya quando è entusiasta?", options: ["Nani?!", "Waku Waku!", "Sugoi!", "Baka!"], correct: 1, image: "anya-wakuwaku.png" },
-      { question: "Come chiama Anya suo padre?", options: ["Papà", "Chichi", "Loid", "Signore"], correct: 1, image: "Chichi.jpg" }
+      { question: "Qual è il cibo preferito di Anya?", options: ["Carote", "Arachidi", "Cioccolato", "Torta"], correct: 1, image: "d0a517642140232317871409ae0ea77d.jpg", isRounded: true },
+      { question: "Come si chiama il cane dei Forger?", options: ["Bond", "Max", "Peanut", "Loid"], correct: 0, image: "Dog.jpg", isRounded: true },
+      { question: "Qual è il potere di Anya?", options: ["Super forza", "Sa volare", "Legge la mente", "Invisibilità"], correct: 2, image: "Poteri.jpg", isRounded: true },
+      { question: "Come si chiama la scuola di Anya?", options: ["UA Academy", "Eden Academy", "Ouka Academy", "PK Academy"], correct: 1, image: "Eden_academy.jpg", isRounded: true },
+      { question: "Nome in codice di Loid?", options: ["Thorn Princess", "Scruffy", "Twilight", "Daybreak"], correct: 2, image: "Spy.jpg", isRounded: true },
+      { question: "Colore capelli di Anya?", options: ["Biondi", "Rosa", "Neri", "Castani"], correct: 1, image: "Capelli.png", isRounded: false },
+      { question: "Cosa vuole collezionare Anya?", options: ["Stelle Stella", "Medaglie", "Punti premio", "Peluche"], correct: 0, image: "Stella.png", isRounded: false },
+      { question: "Migliore amica di Anya?", options: ["Yor", "Fiona", "Becky", "Camilla"], correct: 2, image: "Friend.jpg", isRounded: true },
+      { question: "Cosa dice Anya quando è entusiasta?", options: ["Nani?!", "Waku Waku!", "Sugoi!", "Baka!"], correct: 1, image: "anya-wakuwaku.png", isRounded: true },
+      { question: "Come chiama Anya suo padre?", options: ["Papà", "Chichi", "Loid", "Signore"], correct: 1, image: "Chichi.jpg", isRounded: true }
     ];
 
     let currentQuestion = 0;
@@ -469,6 +478,13 @@
       if(selectedIndex === q.correct) {
         const feedbackImg = document.getElementById('correct-char-img');
         feedbackImg.src = q.image;
+
+        /* Applica la classe rounded-img solo se evidenziata in verde */
+        if (q.isRounded) {
+          feedbackImg.classList.add('rounded-img');
+        } else {
+          feedbackImg.classList.remove('rounded-img');
+        }
         
         const nextBtn = document.getElementById('next-btn');
 
@@ -501,3 +517,4 @@
   </script>
 </body>
 </html>
+
