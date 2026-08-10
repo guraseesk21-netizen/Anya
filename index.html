@@ -102,7 +102,7 @@
       transform: scale(0.9);
     }
 
-    /* LOGO GIGANTE */
+    /* LOGO IN ALTO (INVARIATO) */
     .header-logo {
       width: 100%;
       text-align: center;
@@ -157,6 +157,7 @@
       cursor: pointer;
       box-shadow: 0 4px 12px rgba(255, 158, 187, 0.4);
       transition: transform 0.15s ease, box-shadow 0.15s ease;
+      margin-top: 8px;
     }
 
     .play-btn-fallback:active {
@@ -210,8 +211,8 @@
 
     /* ANYA CHE PARLA */
     .anya-avatar-standalone {
-      width: 105px;
-      height: 105px;
+      width: 110px;
+      height: 110px;
       object-fit: contain;
       background: transparent;
       border: none;
@@ -245,42 +246,60 @@
       border-color: transparent #ffffff transparent transparent;
     }
 
-    /* Immagini di feedback */
+    /* IMMAGINI DI FEEDBACK (Risposta Corretta / Sbagliata) - INGRANDITE E CENTRATE */
     .feedback-img {
-      width: 160px;
+      width: 85%;
+      max-width: 250px;
       height: auto;
-      max-height: 180px;
+      max-height: 220px;
       object-fit: contain;
-      margin: 12px 0;
+      margin: 12px auto;
+      display: block;
       background: transparent;
       border: none;
-      border-radius: 12px;
+      border-radius: 14px;
     }
 
-    /* CONTENITORE IMMAGINI FINALI DISPOSTE IN VERTICALE */
+    /* IMMAGINI SCHERMATA START & INTRO - INGRANDITE */
+    .start-intro-img {
+      width: 75%;
+      max-width: 210px;
+      height: auto;
+      max-height: 210px;
+      object-fit: contain;
+      margin: 10px auto;
+      display: block;
+    }
+
+    /* CONTENITORE IMMAGINI FINALI DISPOSTE IN VERTICALE - INGRANDITE */
     .win-images-container {
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 10px;
-      margin: 10px 0;
+      justify-content: center;
+      gap: 12px;
+      margin: 10px auto;
       width: 100%;
     }
 
     .win-img-top {
-      width: 150px;
+      width: 80%;
+      max-width: 220px;
       height: auto;
-      max-height: 120px;
+      max-height: 160px;
       object-fit: contain;
       border-radius: 12px;
+      display: block;
     }
 
     .win-img-bottom {
-      width: 180px;
+      width: 85%;
+      max-width: 240px;
       height: auto;
-      max-height: 120px;
+      max-height: 160px;
       object-fit: contain;
       border-radius: 12px;
+      display: block;
     }
   </style>
 </head>
@@ -311,13 +330,13 @@
 
     <!-- ================= SCHERMATA 1: START ================= -->
     <div id="screen-start" class="screen active">
-      <img src="Anya_aracidi.png" style="width: 140px; height: auto;" alt="Anya Arachide">
+      <img src="Anya_aracidi.png" class="start-intro-img" alt="Anya Arachide">
       <button class="play-btn-fallback" onclick="startIntro()">INIZIA</button>
     </div>
 
     <!-- ================= SCHERMATA 2: INTRO ================= -->
     <div id="screen-intro" class="screen">
-      <img src="Anya1.png" style="width: 130px; height: auto;" alt="Anya 1" onerror="this.src='anya_happy.png';">
+      <img src="Anya1.png" class="start-intro-img" alt="Anya 1" onerror="this.src='anya_happy.png';">
       <div class="intro-text-box">
         Waku Waku! Aiuta Anya a rispondere correttamente a tutte le 10 domande per conquistare il premio finale!
       </div>
@@ -343,7 +362,7 @@
 
     <!-- ================= SCHERMATA 4: RISPOSTA CORRETTA ================= -->
     <div id="screen-correct" class="screen">
-      <h3 style="color: #4caf50;">Risposta Corretta!</h3>
+      <h3 style="color: #4caf50; font-size: 1.2rem;">Risposta Corretta!</h3>
       <img id="correct-char-img" src="" class="feedback-img" alt="Personaggio" onerror="this.src='anya_happy.png';">
       
       <button id="next-btn" class="play-btn-fallback" style="font-size: 0.85rem; padding: 8px 20px; margin-top: 5px;" onclick="nextQuestion()">Prossima</button>
@@ -361,7 +380,7 @@
       <h3 style="color: #ff85a2; font-size: 1.3rem;">WAKU WAKU!</h3>
       <p style="font-size: 0.85rem; color: #555; margin-top: 2px;">Hai aiutato Anya a completare il quiz!</p>
       
-      <!-- IMMAGINI SOVRAPPOSTE IN VERTICALE -->
+      <!-- IMMAGINI SOVRAPPOSTE IN VERTICALE - INGRANDITE E CENTRATE -->
       <div class="win-images-container">
         <img src="Premio.jpg" class="win-img-top" alt="Pacchetto Arachidi" onerror="this.src='Arachide.png';">
         <img src="Anya_fine.gif" class="win-img-bottom" alt="Anya Festeggia" onerror="this.style.display='none';">
