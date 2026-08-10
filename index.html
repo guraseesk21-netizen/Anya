@@ -66,7 +66,7 @@
       justify-content: space-between;
     }
 
-    /* BOTTONE MUSICA */
+    /* BOTTONE MUSICA IN ALTO A DESTRA */
     .music-btn {
       position: absolute;
       top: 0px;
@@ -87,6 +87,7 @@
       line-height: 1 !important;
       padding: 0 !important;
       box-shadow: 0 3px 8px rgba(255, 133, 162, 0.4);
+      transition: all 0.2s ease;
     }
 
     /* LOGO GIGANTE */
@@ -244,7 +245,7 @@
 
   <div class="game-card">
 
-    <!-- BOTTONE MUSICA -->
+    <!-- BOTTONE MUSICA IN ALTO -->
     <button class="music-btn" id="music-toggle-btn" onclick="toggleAudio()">♪</button>
 
     <!-- LOGO GIGANTE -->
@@ -312,11 +313,10 @@
 
   </div>
 
-  <!-- Audio di sottofondo -->
-  <audio id="bg-music" src="relax_music.mp3" loop></audio>
+  <!-- AUDIO DELLA CANZONE (Song.mp3) -->
+  <audio id="bg-music" src="Song.mp3" loop autoplay></audio>
 
   <script>
-    // DATABASE DOMANDE SENZA EMOJI NELLE RISPOSTE
     const questions = [
       { question: "Qual è il cibo preferito di Anya?", options: ["Carote", "Arachidi", "Cioccolato", "Torta"], correct: 1, image: "Arachide.png" },
       { question: "Come si chiama il cane dei Forger?", options: ["Bond", "Max", "Peanut", "Loid"], correct: 0, image: "Dog.jpg" },
@@ -337,17 +337,40 @@
     const bgMusic = document.getElementById('bg-music');
     const musicBtn = document.getElementById('music-toggle-btn');
 
-    // Gestione audio
+    // Tenta di avviare la musica subito (se il browser lo permette)
+    window.addEventListener('DOMContentLoaded', () => {
+      bgMusic.play().then(() => {
+        isMusicPlaying = true;
+        updateMusicButton();
+      }).catch(() => {
+        // Bloccato dalle impostazioni del browser finché l'utente non interagisce
+        isMusicPlaying = false;
+        updateMusicButton();
+      });
+    });
+
+    // Aggiorna l'aspetto del tasto musica
+    function updateMusicButton() {
+      if (isMusicPlaying) {
+        musicBtn.textContent = "♪";
+        musicBtn.style.opacity = "1";
+      } else {
+        musicBtn.textContent = "🔇";
+        musicBtn.style.opacity = "0.5";
+      }
+    }
+
+    // Gestione accensione e spegnimento musica con il tasto in alto
     function toggleAudio() {
       if (isMusicPlaying) {
         bgMusic.pause();
         isMusicPlaying = false;
-        musicBtn.style.opacity = "0.6";
       } else {
-        bgMusic.play().catch(() => {});
-        isMusicPlaying = true;
-        musicBtn.style.opacity = "1";
+        bgMusic.play().then(() => {
+          isMusicPlaying = true;
+        }).catch(err => console.log(err));
       }
+      updateMusicButton();
     }
 
     // Cambia schermata
@@ -358,7 +381,12 @@
 
     // Inizia intro
     function startIntro() {
-      if (!isMusicPlaying) toggleAudio();
+      if (!isMusicPlaying) {
+        bgMusic.play().then(() => {
+          isMusicPlaying = true;
+          updateMusicButton();
+        }).catch(() => {});
+      }
       goToScreen('screen-intro');
     }
 
