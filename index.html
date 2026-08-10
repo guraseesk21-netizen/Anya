@@ -261,7 +261,6 @@
 
     <!-- ================= SCHERMATA 2: INTRO (Spiegazione Gioco) ================= -->
     <div id="screen-intro" class="screen">
-      <!-- Immagine Anya1.png inserita qui -->
       <img src="Anya1.png" style="width: 130px; height: auto;" alt="Anya 1" onerror="this.src='anya_happy.png';">
       <div class="intro-text-box">
         Waku Waku! Aiuta Anya a rispondere correttamente a tutte e 10 le domande per conquistare il premio finale! 🥜
@@ -289,7 +288,6 @@
     <!-- ================= SCHERMATA 4: RISPOSTA CORRETTA ================= -->
     <div id="screen-correct" class="screen">
       <h3 style="color: #4caf50;">Risposta Corretta! ✨</h3>
-      <!-- IMMAGINE DINAMICA DEL PERSONAGGIO/RISPOSTA -->
       <img id="correct-char-img" src="" class="feedback-img" alt="Personaggio" onerror="this.src='anya_happy.png';">
       <p style="font-size: 0.85rem; color: #555; margin-bottom: 10px;">Ottimo lavoro!</p>
       <button class="play-btn-fallback" style="font-size: 0.85rem; padding: 8px 20px;" onclick="nextQuestion()">Prossima</button>
@@ -298,7 +296,6 @@
     <!-- ================= SCHERMATA 5: RISPOSTA SBAGLIATA ================= -->
     <div id="screen-wrong" class="screen">
       <h3 style="color: #ff6584;">Sbagliato... 😭</h3>
-      <!-- Anya che piange -->
       <img src="anya_crying.png" class="feedback-img" alt="Anya Piange">
       <p style="font-size: 0.85rem; color: #555; margin-bottom: 10px;">Riprova per Anya!</p>
       <button class="play-btn-fallback" style="font-size: 0.85rem; padding: 8px 20px;" onclick="retryQuestion()">Riprova</button>
@@ -308,7 +305,6 @@
     <div id="screen-win" class="screen">
       <h3 style="color: #ff85a2;">Vittoria! 🎉</h3>
       <p style="font-size: 0.85rem; color: #555; margin-top: 3px;">Hai superato tutte le 10 domande!</p>
-      <!-- IMMAGINE PREMIO FINALE (Premio.jpg) -->
       <img src="Premio.jpg" class="reward-img" alt="Premio Finale" onerror="this.src='Arachide.png';">
       <p style="font-size: 0.9rem; font-weight: bold; color: #d97706;">Hai vinto il premio!</p>
       <button class="play-btn-fallback" style="margin-top: 10px; font-size: 0.85rem; padding: 8px 20px;" onclick="goToScreen('screen-start')">Rigioca</button>
@@ -320,18 +316,18 @@
   <audio id="bg-music" src="relax_music.mp3" loop></audio>
 
   <script>
-    // DATABASE DOMANDE CON IMMAGINI AGGIORNATE DAI TUOI FILE
+    // DATABASE DOMANDE SENZA EMOJI NELLE RISPOSTE
     const questions = [
-      { question: "Qual è il cibo preferito di Anya?", options: ["Carote", "Arachidi 🥜", "Cioccolato", "Torta"], correct: 1, image: "Arachide.png" },
-      { question: "Come si chiama il cane dei Forger?", options: ["Bond 🐶", "Max", "Peanut", "Loid"], correct: 0, image: "Dog.jpg" },
-      { question: "Qual è il potere di Anya?", options: ["Super forza", "Sa volare", "Legge la mente 🧠", "Invisibilità"], correct: 2, image: "Poteri.jpg" },
-      { question: "Come si chiama la scuola di Anya?", options: ["UA Academy", "Eden Academy 🏫", "Ouka Academy", "PK Academy"], correct: 1, image: "Eden_academy.jpg" }, // EDEN_ACADEMY.JPG
-      { question: "Nome in codice di Loid?", options: ["Thorn Princess", "Scruffy", "Twilight 🕵️‍♂️", "Daybreak"], correct: 2, image: "Spy.jpg" },
-      { question: "Colore capelli di Anya?", options: ["Biondi", "Rosa 💖", "Neri", "Castani"], correct: 1, image: "Capelli.png" },
-      { question: "Cosa vuole collezionare Anya?", options: ["Stelle Stella ⭐", "Medaglie", "Punti premio", "Peluche"], correct: 0, image: "Stella.png" }, // STELLA.PNG
-      { question: "Migliore amica di Anya?", options: ["Yor", "Fiona", "Becky 🎀", "Camilla"], correct: 2, image: "Friend.jpg" },
-      { question: "Cosa dice Anya quando è entusiasta?", options: ["Nani?!", "Waku Waku! ✨", "Sugoi!", "Baka!"], correct: 1, image: "anya-wakuwaku.png" }, // ANYA-WAKUWAKU.PNG
-      { question: "Come chiama Anya suo padre?", options: ["Papà", "Chichi 👨‍👧", "Loid", "Signore"], correct: 1, image: "Chichi.jpg" }
+      { question: "Qual è il cibo preferito di Anya?", options: ["Carote", "Arachidi", "Cioccolato", "Torta"], correct: 1, image: "Arachide.png" },
+      { question: "Come si chiama il cane dei Forger?", options: ["Bond", "Max", "Peanut", "Loid"], correct: 0, image: "Dog.jpg" },
+      { question: "Qual è il potere di Anya?", options: ["Super forza", "Sa volare", "Legge la mente", "Invisibilità"], correct: 2, image: "Poteri.jpg" },
+      { question: "Come si chiama la scuola di Anya?", options: ["UA Academy", "Eden Academy", "Ouka Academy", "PK Academy"], correct: 1, image: "Eden_academy.jpg" },
+      { question: "Nome in codice di Loid?", options: ["Thorn Princess", "Scruffy", "Twilight", "Daybreak"], correct: 2, image: "Spy.jpg" },
+      { question: "Colore capelli di Anya?", options: ["Biondi", "Rosa", "Neri", "Castani"], correct: 1, image: "Capelli.png" },
+      { question: "Cosa vuole collezionare Anya?", options: ["Stelle Stella", "Medaglie", "Punti premio", "Peluche"], correct: 0, image: "Stella.png" },
+      { question: "Migliore amica di Anya?", options: ["Yor", "Fiona", "Becky", "Camilla"], correct: 2, image: "Friend.jpg" },
+      { question: "Cosa dice Anya quando è entusiasta?", options: ["Nani?!", "Waku Waku!", "Sugoi!", "Baka!"], correct: 1, image: "anya-wakuwaku.png" },
+      { question: "Come chiama Anya suo padre?", options: ["Papà", "Chichi", "Loid", "Signore"], correct: 1, image: "Chichi.jpg" }
     ];
 
     const defaultHappyImage = "Anya1.png";
@@ -402,7 +398,6 @@
         goToScreen('screen-quiz');
         loadQuestion();
       } else {
-        // VITTORIA FINALE (Mostra Premio.jpg)
         goToScreen('screen-win');
       }
     }
