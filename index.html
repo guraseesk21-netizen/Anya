@@ -102,7 +102,7 @@
       transform: scale(0.9);
     }
 
-    /* LOGO IN ALTO (INVARIATO) */
+    /* LOGO IN ALTO */
     .header-logo {
       width: 100%;
       text-align: center;
@@ -246,7 +246,7 @@
       border-color: transparent #ffffff transparent transparent;
     }
 
-    /* IMMAGINI DI FEEDBACK (Risposta Corretta / Sbagliata) - INGRANDITE E CENTRATE */
+    /* IMMAGINI DI FEEDBACK (Risposta Corretta / Sbagliata) - ANGOLI MORBIDI */
     .feedback-img {
       width: 85%;
       max-width: 250px;
@@ -260,7 +260,7 @@
       border-radius: 14px;
     }
 
-    /* IMMAGINI SCHERMATA START & INTRO - INGRANDITE */
+    /* IMMAGINI SCHERMATA START & INTRO - ANGOLI MORBIDI */
     .start-intro-img {
       width: 75%;
       max-width: 210px;
@@ -269,9 +269,10 @@
       object-fit: contain;
       margin: 10px auto;
       display: block;
+      border-radius: 14px;
     }
 
-    /* CONTENITORE IMMAGINI FINALI DISPOSTE IN VERTICALE - INGRANDITE */
+    /* CONTENITORE IMMAGINI FINALI - ANGOLI MORBIDI */
     .win-images-container {
       display: flex;
       flex-direction: column;
@@ -288,7 +289,7 @@
       height: auto;
       max-height: 160px;
       object-fit: contain;
-      border-radius: 12px;
+      border-radius: 14px;
       display: block;
     }
 
@@ -298,7 +299,7 @@
       height: auto;
       max-height: 160px;
       object-fit: contain;
-      border-radius: 12px;
+      border-radius: 14px;
       display: block;
     }
   </style>
@@ -380,7 +381,7 @@
       <h3 style="color: #ff85a2; font-size: 1.3rem;">WAKU WAKU!</h3>
       <p style="font-size: 0.85rem; color: #555; margin-top: 2px;">Hai aiutato Anya a completare il quiz!</p>
       
-      <!-- IMMAGINI SOVRAPPOSTE IN VERTICALE - INGRANDITE E CENTRATE -->
+      <!-- IMMAGINI SOVRAPPOSTE IN VERTICALE -->
       <div class="win-images-container">
         <img src="Premio.jpg" class="win-img-top" alt="Pacchetto Arachidi" onerror="this.src='Arachide.png';">
         <img src="Anya_fine.gif" class="win-img-bottom" alt="Anya Festeggia" onerror="this.style.display='none';">
