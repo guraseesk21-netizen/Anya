@@ -87,7 +87,8 @@
       line-height: 1 !important;
       padding: 0 !important;
       box-shadow: 0 3px 8px rgba(255, 133, 162, 0.4);
-      transition: all 0.2s ease;
+      transition: opacity 0.2s ease;
+      opacity: 0.5; /* Di base un po' schiarito finché non si attiva */
     }
 
     /* LOGO GIGANTE */
@@ -264,7 +265,7 @@
     <div id="screen-intro" class="screen">
       <img src="Anya1.png" style="width: 130px; height: auto;" alt="Anya 1" onerror="this.src='anya_happy.png';">
       <div class="intro-text-box">
-        Waku Waku! Aiuta Anya a rispondere correttamente a tutte e 10 le domande per conquistare il premio finale! 🥜
+        Waku Waku! Aiuta Anya a rispondere correttamente a tutte e 10 le domande per conquistarne il premio finale! 🥜
       </div>
       <button class="play-btn-fallback" style="font-size: 0.95rem; padding: 8px 24px;" onclick="startGame()">Via!</button>
     </div>
@@ -337,40 +338,42 @@
     const bgMusic = document.getElementById('bg-music');
     const musicBtn = document.getElementById('music-toggle-btn');
 
-    // Tenta di avviare la musica subito (se il browser lo permette)
-    window.addEventListener('DOMContentLoaded', () => {
+    // Funzione per avviare la musica
+    function playAudio() {
       bgMusic.play().then(() => {
         isMusicPlaying = true;
-        updateMusicButton();
-      }).catch(() => {
-        // Bloccato dalle impostazioni del browser finché l'utente non interagisce
-        isMusicPlaying = false;
-        updateMusicButton();
-      });
-    });
-
-    // Aggiorna l'aspetto del tasto musica
-    function updateMusicButton() {
-      if (isMusicPlaying) {
-        musicBtn.textContent = "♪";
         musicBtn.style.opacity = "1";
-      } else {
-        musicBtn.textContent = "🔇";
-        musicBtn.style.opacity = "0.5";
-      }
+      }).catch(() => {
+        isMusicPlaying = false;
+        musicBtn.style.opacity = "0.4";
+      });
     }
 
-    // Gestione accensione e spegnimento musica con il tasto in alto
+    // Tenta di riprodurre la musica subito all'apertura
+    window.addEventListener('load', () => {
+      playAudio();
+    });
+
+    // Se il browser blocca l'autoplay, parte al primo tocco dell'utente ovunque sullo schermo
+    const handleFirstTouch = () => {
+      if (!isMusicPlaying) {
+        playAudio();
+      }
+      document.removeEventListener('click', handleFirstTouch);
+      document.removeEventListener('touchstart', handleFirstTouch);
+    };
+    document.addEventListener('click', handleFirstTouch);
+    document.addEventListener('touchstart', handleFirstTouch);
+
+    // Gestione accensione e spegnimento musica premendo il tasto in alto
     function toggleAudio() {
       if (isMusicPlaying) {
         bgMusic.pause();
         isMusicPlaying = false;
+        musicBtn.style.opacity = "0.4";
       } else {
-        bgMusic.play().then(() => {
-          isMusicPlaying = true;
-        }).catch(err => console.log(err));
+        playAudio();
       }
-      updateMusicButton();
     }
 
     // Cambia schermata
@@ -381,12 +384,7 @@
 
     // Inizia intro
     function startIntro() {
-      if (!isMusicPlaying) {
-        bgMusic.play().then(() => {
-          isMusicPlaying = true;
-          updateMusicButton();
-        }).catch(() => {});
-      }
+      if (!isMusicPlaying) playAudio();
       goToScreen('screen-intro');
     }
 
