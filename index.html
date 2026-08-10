@@ -289,11 +289,11 @@
       <button class="play-btn-fallback" onclick="startIntro()">INIZIA</button>
     </div>
 
-    <!-- ================= SCHERMATA 2: INTRO (Spiegazione Gioco) ================= -->
+    <!-- ================= SCHERMATA 2: INTRO ================= -->
     <div id="screen-intro" class="screen">
       <img src="Anya1.png" style="width: 130px; height: auto;" alt="Anya 1" onerror="this.src='anya_happy.png';">
       <div class="intro-text-box">
-        Waku Waku! Aiuta Anya a rispondere correttamente a tutte e 10 le domande per conquistare il premio finale! 🥜
+        Waku Waku! Aiuta Anya a rispondere correttamente a tutte e 10 le domande per conquistarne il premio finale! 🥜
       </div>
       <button class="play-btn-fallback" style="font-size: 0.95rem; padding: 8px 24px;" onclick="startGame()">Via!</button>
     </div>
@@ -333,19 +333,19 @@
     <div id="screen-win" class="screen">
       <h3 style="color: #ff85a2;">Vittoria! 🎉</h3>
       <p style="font-size: 0.85rem; color: #555; margin-top: 3px;">Hai superato tutte le 10 domande!</p>
-      <img src="Premio.jpg" class="reward-img" alt="Premio Finale" onerror="this.src='Arachide.png';">
+      <img src="Anya_fine.gif" class="reward-img" alt="Anya Festeggia" onerror="this.src='Arachide.png';">
       <p style="font-size: 0.9rem; font-weight: bold; color: #d97706;">Hai vinto il premio!</p>
       <button class="play-btn-fallback" style="margin-top: 10px; font-size: 0.85rem; padding: 8px 20px;" onclick="goToScreen('screen-start')">Rigioca</button>
     </div>
 
   </div>
 
-  <!-- AUDIO DELLA CANZONE (Song.mp3) -->
+  <!-- AUDIO DELLA CANZONE -->
   <audio id="bg-music" src="Song.mp3" loop autoplay></audio>
 
   <script>
     const questions = [
-      { question: "Qual è il cibo preferito di Anya?", options: ["Carote", "Arachidi", "Cioccolato", "Torta"], correct: 1, image: "Arachide.png" },
+      { question: "Qual è il cibo preferito di Anya?", options: ["Carote", "Arachidi", "Cioccolato", "Torta"], correct: 1, image: "d0a517642140232317871409ae0ea77d.jpg" },
       { question: "Come si chiama il cane dei Forger?", options: ["Bond", "Max", "Peanut", "Loid"], correct: 0, image: "Dog.jpg" },
       { question: "Qual è il potere di Anya?", options: ["Super forza", "Sa volare", "Legge la mente", "Invisibilità"], correct: 2, image: "Poteri.jpg" },
       { question: "Come si chiama la scuola di Anya?", options: ["UA Academy", "Eden Academy", "Ouka Academy", "PK Academy"], correct: 1, image: "Eden_academy.jpg" },
