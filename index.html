@@ -246,13 +246,26 @@
       border-color: transparent #ffffff transparent transparent;
     }
 
-    /* IMMAGINI DI FEEDBACK (Risposta Corretta / Sbagliata) - ANGOLI MORBIDI FORZATI */
+    /* PRIMA IMMAGINE INIZIALE (Anya Arachidi) - SENZA TAGLI E SENZA ANGOLI ARROTONDATI */
+    .start-intro-img {
+      width: 75%;
+      max-width: 210px;
+      height: auto;
+      max-height: 210px;
+      object-fit: contain;
+      margin: 10px auto;
+      display: block;
+      border-radius: 0 !important;
+      overflow: visible !important;
+    }
+
+    /* IMMAGINI DI FEEDBACK (Risposta Corretta / Sbagliata) - DIMENSIONI ORIGINALI CON ANGOLI ARROTONDATI */
     .feedback-img {
       width: 85%;
       max-width: 250px;
       height: auto;
       max-height: 220px;
-      object-fit: cover;
+      object-fit: contain;
       margin: 12px auto;
       display: block;
       background: transparent;
@@ -261,20 +274,7 @@
       overflow: hidden !important;
     }
 
-    /* IMMAGINI SCHERMATA START & INTRO - ANGOLI MORBIDI FORZATI */
-    .start-intro-img {
-      width: 75%;
-      max-width: 210px;
-      height: auto;
-      max-height: 210px;
-      object-fit: cover;
-      margin: 10px auto;
-      display: block;
-      border-radius: 18px !important;
-      overflow: hidden !important;
-    }
-
-    /* CONTENITORE IMMAGINI FINALI - ANGOLI MORBIDI FORZATI */
+    /* CONTENITORE IMMAGINI FINALI - DIMENSIONI ORIGINALI CON ANGOLI ARROTONDATI */
     .win-images-container {
       display: flex;
       flex-direction: column;
@@ -290,7 +290,7 @@
       max-width: 220px;
       height: auto;
       max-height: 160px;
-      object-fit: cover;
+      object-fit: contain;
       border-radius: 18px !important;
       overflow: hidden !important;
       display: block;
@@ -301,7 +301,7 @@
       max-width: 240px;
       height: auto;
       max-height: 160px;
-      object-fit: cover;
+      object-fit: contain;
       border-radius: 18px !important;
       overflow: hidden !important;
       display: block;
@@ -343,7 +343,7 @@
     <div id="screen-intro" class="screen">
       <img src="Anya1.png" class="start-intro-img" alt="Anya 1" onerror="this.src='anya_happy.png';">
       <div class="intro-text-box">
-        Waku Waku! Aiuta Anya a rispondere correttamente a tutte le 10 domande per conquistarne il premio finale!
+        Waku Waku! Aiuta Anya a rispondere correttamente a tutte le 10 domande per conquistare il premio finale!
       </div>
       <button class="play-btn-fallback" style="font-size: 0.95rem; padding: 8px 24px;" onclick="startGame()">Via!</button>
     </div>
