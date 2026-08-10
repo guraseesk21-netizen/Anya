@@ -246,7 +246,7 @@
       border-color: transparent #ffffff transparent transparent;
     }
 
-    /* IMMAGINE START/INTRO - NATURALE E SENZA TAGLI (Come richiesto) */
+    /* IMMAGINE START/INTRO - NATURALE E SENZA TAGLI */
     .start-intro-img {
       width: 75%;
       max-width: 210px;
@@ -274,17 +274,16 @@
       overflow: visible !important;
     }
 
-    /* CLASSE SPECIFICA PER LE IMMAGINI EVIDENZIATE IN VERDE (ANGOLI ARROTONDATI MORBIDI) */
-    /* Usiamo !important per forzare l'arrotondamento e overflow:hidden per tagliare gli spigoli */
+    /* CLASSE SPECIFICA PER LE IMMAGINI CON ANGOLI ARROTONDATI */
     .rounded-img {
       border-radius: 18px !important;
       overflow: hidden !important;
-      object-fit: cover !important; /* Cover funziona meglio con overflow:hidden per riempire il rettangolo arrotondato */
-      width: 85% !important; /* Leggermente più grande per l'effetto cover */
-      height: 200px !important; /* Altezza fissa per coerenza */
+      object-fit: cover !important;
+      width: 85% !important;
+      height: 200px !important;
     }
 
-    /* CONTENITORE IMMAGINI FINALI (Entrambe evidenziate in verde -> Arrotondate) */
+    /* CONTENITORE IMMAGINI FINALI */
     .win-images-container {
       display: flex;
       flex-direction: column;
@@ -342,7 +341,7 @@
     <div id="screen-intro" class="screen">
       <img src="Anya1.png" class="start-intro-img" alt="Anya 1">
       <div class="intro-text-box">
-        Waku Waku! Aiuta Anya a rispondere correttamente a tutte le 10 domande per conquistare il premio finale!
+        Waku Waku! Aiuta Anya a rispondere correttamente a tutte le 10 domande per conquistarne il premio finale!
       </div>
       <button class="play-btn-fallback" style="font-size: 0.95rem; padding: 8px 24px;" onclick="startGame()">Via!</button>
     </div>
@@ -384,7 +383,6 @@
       <h3 style="color: #ff85a2; font-size: 1.3rem;">WAKU WAKU!</h3>
       <p style="font-size: 0.85rem; color: #555; margin-top: 2px;">Hai aiutato Anya a completare il quiz!</p>
       
-      <!-- IMMAGINI SOVRAPPOSTE IN VERTICALE (Entrambe evidenziate in verde -> Arrotondate) -->
       <div class="win-images-container">
         <img src="Premio.jpg" class="win-img-top" alt="Pacchetto Arachidi">
         <img src="Anya_fine.gif" class="win-img-bottom" alt="Anya Festeggia">
@@ -400,10 +398,6 @@
   <audio id="bg-music" src="Song.mp3" loop autoplay></audio>
 
   <script>
-    /*
-      isRounded: true  -> Immagine evidenziata in verde nell'elenco (Riceve angoli arrotondati morbidi)
-      isRounded: false -> Immagine non evidenziata (Mantiene angoli dritti naturali)
-    */
     const questions = [
       { question: "Qual è il cibo preferito di Anya?", options: ["Carote", "Arachidi", "Cioccolato", "Torta"], correct: 1, image: "d0a517642140232317871409ae0ea77d.jpg", isRounded: true },
       { question: "Come si chiama il cane dei Forger?", options: ["Bond", "Max", "Peanut", "Loid"], correct: 0, image: "Dog.jpg", isRounded: true },
@@ -413,7 +407,7 @@
       { question: "Colore capelli di Anya?", options: ["Biondi", "Rosa", "Neri", "Castani"], correct: 1, image: "Capelli.png", isRounded: false },
       { question: "Cosa vuole collezionare Anya?", options: ["Stelle Stella", "Medaglie", "Punti premio", "Peluche"], correct: 0, image: "Stella.png", isRounded: false },
       { question: "Migliore amica di Anya?", options: ["Yor", "Fiona", "Becky", "Camilla"], correct: 2, image: "Friend.jpg", isRounded: true },
-      { question: "Cosa dice Anya quando è entusiasta?", options: ["Nani?!", "Waku Waku!", "Sugoi!", "Baka!"], correct: 1, image: "anya-wakuwaku.png", isRounded: true },
+      { question: "Cosa dice Anya quando è entusiasta?", options: ["Nani?!", "Waku Waku!", "Sugoi!", "Baka!"], correct: 1, image: "anya-wakuwaku.png", isRounded: false },
       { question: "Come chiama Anya suo padre?", options: ["Papà", "Chichi", "Loid", "Signore"], correct: 1, image: "Chichi.jpg", isRounded: true }
     ];
 
@@ -485,7 +479,6 @@
         const feedbackImg = document.getElementById('correct-char-img');
         feedbackImg.src = q.image;
 
-        /* Aggiunge la classe rounded-img SOLO se isRounded è true */
         if (q.isRounded) {
           feedbackImg.classList.add('rounded-img');
         } else {
