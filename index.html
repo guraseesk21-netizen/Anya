@@ -215,16 +215,16 @@
       border-color: transparent #ffffff transparent transparent;
     }
 
-    /* Immagini di feedback NUOVE */
+    /* Immagini di feedback */
     .feedback-img, .reward-img {
-      width: 160px; /* Leggermente più grandi per vederle meglio */
+      width: 160px;
       height: auto;
       max-height: 180px;
       object-fit: contain;
       margin: 8px 0;
       background: transparent;
       border: none;
-      border-radius: 10px; /* Un po' tondi i bordi */
+      border-radius: 12px;
     }
   </style>
 </head>
@@ -288,7 +288,7 @@
     <!-- ================= SCHERMATA 4: RISPOSTA CORRETTA ================= -->
     <div id="screen-correct" class="screen">
       <h3 style="color: #4caf50;">Risposta Corretta! ✨</h3>
-      <!-- IMMAGINE DINAMICA (Cane, Spia, Amica, ecc.) -->
+      <!-- IMMAGINE DINAMICA DEL PERSONAGGIO/RISPOSTA -->
       <img id="correct-char-img" src="" class="feedback-img" alt="Personaggio">
       <p style="font-size: 0.85rem; color: #555; margin-bottom: 10px;">Ottimo lavoro!</p>
       <button class="play-btn-fallback" style="font-size: 0.85rem; padding: 8px 20px;" onclick="nextQuestion()">Prossima</button>
@@ -307,9 +307,9 @@
     <div id="screen-win" class="screen">
       <h3 style="color: #ff85a2;">Vittoria! 🎉</h3>
       <p style="font-size: 0.85rem; color: #555; margin-top: 3px;">Hai superato tutte le 10 domande!</p>
-      <!-- Premio: Arachide -->
-      <img src="Arachide.png" class="reward-img" alt="Arachide Premio">
-      <p style="font-size: 0.9rem; font-weight: bold; color: #d97706;">Hai vinto un pacchetto!</p>
+      <!-- IMMAGINE PREMIO FINALE (Premio.jpg) -->
+      <img src="Premio.jpg" class="reward-img" alt="Premio Finale" onerror="this.src='Arachide.png'">
+      <p style="font-size: 0.9rem; font-weight: bold; color: #d97706;">Hai vinto il premio!</p>
       <button class="play-btn-fallback" style="margin-top: 10px; font-size: 0.85rem; padding: 8px 20px;" onclick="goToScreen('screen-start')">Rigioca</button>
     </div>
 
@@ -322,18 +322,17 @@
     // DATABASE DOMANDE CON IMMAGINI SPECIFICHE
     const questions = [
       { question: "Qual è il cibo preferito di Anya?", options: ["Carote", "Arachidi 🥜", "Cioccolato", "Torta"], correct: 1, image: "Arachide.png" },
-      { question: "Come si chiama il cane dei Forger?", options: ["Bond 🐶", "Max", "Peanut", "Loid"], correct: 0, image: "Dog.jpg" }, // IMMAGINE DEL CANE
-      { question: "Qual è il potere di Anya?", options: ["Super forza", "Sa volare", "Legge la mente 🧠", "Invisibilità"], correct: 2, image: "Poteri.jpg" }, // IMMAGINE POTERI
+      { question: "Come si chiama il cane dei Forger?", options: ["Bond 🐶", "Max", "Peanut", "Loid"], correct: 0, image: "Dog.jpg" },
+      { question: "Qual è il potere di Anya?", options: ["Super forza", "Sa volare", "Legge la mente 🧠", "Invisibilità"], correct: 2, image: "Poteri.jpg" },
       { question: "Come si chiama la scuola di Anya?", options: ["UA Academy", "Eden Academy 🏫", "Ouka Academy", "PK Academy"], correct: 1, image: "Eden.png" },
-      { question: "Nome in codice di Loid?", options: ["Thorn Princess", "Scruffy", "Twilight 🕵️‍♂️", "Daybreak"], correct: 2, image: "Spy.jpg" }, // IMMAGINE DELLA SPIA
+      { question: "Nome in codice di Loid?", options: ["Thorn Princess", "Scruffy", "Twilight 🕵️‍♂️", "Daybreak"], correct: 2, image: "Spy.jpg" },
       { question: "Colore capelli di Anya?", options: ["Biondi", "Rosa 💖", "Neri", "Castani"], correct: 1, image: "Capelli.png" },
       { question: "Cosa vuole collezionare Anya?", options: ["Stelle Stella ⭐", "Medaglie", "Punti premio", "Peluche"], correct: 0, image: "img_stella.png" },
-      { question: "Migliore amica di Anya?", options: ["Yor", "Fiona", "Becky 🎀", "Camilla"], correct: 2, image: "Friend.jpg" }, // IMMAGINE DELL'AMICA
+      { question: "Migliore amica di Anya?", options: ["Yor", "Fiona", "Becky 🎀", "Camilla"], correct: 2, image: "Friend.jpg" },
       { question: "Cosa dice Anya quando è entusiasta?", options: ["Nani?!", "Waku Waku! ✨", "Sugoi!", "Baka!"], correct: 1, image: "img_wakuwaku.png" },
-      { question: "Come chiama Anya suo padre?", options: ["Papà", "Chichi 👨‍👧", "Loid", "Signore"], correct: 1, image: "img_chichi.png" }
+      { question: "Come chiama Anya suo padre?", options: ["Papà", "Chichi 👨‍👧", "Loid", "Signore"], correct: 1, image: "Chichi.jpg" } // IMMAGINE CHICHI.JPG
     ];
 
-    // Immagine di fallback se non ne trova una specifica
     const defaultHappyImage = "anya_happy.png";
 
     let currentQuestion = 0;
@@ -354,26 +353,26 @@
       }
     }
 
-    // Funzione per cambiare schermata
+    // Cambia schermata
     function goToScreen(screenId) {
       document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
       document.getElementById(screenId).classList.add('active');
     }
 
-    // Inizia l'intro e attiva la musica
+    // Inizia intro
     function startIntro() {
       if (!isMusicPlaying) toggleAudio();
       goToScreen('screen-intro');
     }
 
-    // Inizia il quiz
+    // Inizia quiz
     function startGame() {
       currentQuestion = 0;
       goToScreen('screen-quiz');
       loadQuestion();
     }
 
-    // Carica la domanda
+    // Carica domanda
     function loadQuestion() {
       const q = questions[currentQuestion];
       document.getElementById('question-text').textContent = q.question;
@@ -383,37 +382,33 @@
       document.getElementById('anya-expression').src = "anya_talking.png";
     }
 
-    // Controlla la risposta
+    // Controlla risposta
     function checkAnswer(selectedIndex) {
       const q = questions[currentQuestion];
       if(selectedIndex === q.correct) {
-        // CORRETTO: Imposta l'immagine specifica
         const feedbackImg = document.getElementById('correct-char-img');
-        // Prova a caricare l'immagine della domanda, altrimenti usa quella di default
         feedbackImg.src = q.image ? q.image : defaultHappyImage;
-        // Gestione errore nel caso il file non esista
         feedbackImg.onerror = function() { this.src = defaultHappyImage; };
         
         goToScreen('screen-correct');
       } else {
-        // SBAGLIATO
         goToScreen('screen-wrong');
       }
     }
 
-    // Passa alla domanda successiva
+    // Prossima domanda
     function nextQuestion() {
       currentQuestion++;
       if(currentQuestion < questions.length) {
         goToScreen('screen-quiz');
         loadQuestion();
       } else {
-        // VITTORIA FINALE
+        // VITTORIA FINALE (Mostra Premio.jpg)
         goToScreen('screen-win');
       }
     }
 
-    // Riprova
+    // Riprova domanda
     function retryQuestion() {
       goToScreen('screen-quiz');
       loadQuestion();
