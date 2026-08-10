@@ -246,7 +246,7 @@
       border-color: transparent #ffffff transparent transparent;
     }
 
-    /* PRIMA IMMAGINE INIZIALE (Anya Arachidi) - NATURALE E SENZA TAGLI */
+    /* PRIMA IMMAGINI INIZIALE (Anya Arachidi) - SENZA ARROTONDAMENTO */
     .start-intro-img {
       width: 75%;
       max-width: 210px;
@@ -258,22 +258,22 @@
       border-radius: 0 !important;
     }
 
-    /* TUTTE LE IMMAGINI DELLE RISPOSTE ED EVIDENZIATE IN VERDE: ANGOLI ARROTONDATI MORBIDI */
+    /* IMMAGINI DELLE RISPOSTE: MANTERRANO DIMENSIONI NATURALI (CON TAIN) + ANGOLI ARROTONDATI */
     .feedback-img {
-      width: 85%;
       max-width: 250px;
-      height: auto;
       max-height: 220px;
-      object-fit: cover;
+      width: auto;
+      height: auto;
+      object-fit: contain;
       margin: 12px auto;
       display: block;
       background: transparent;
       border: none;
-      border-radius: 20px !important;
+      border-radius: 18px !important;
       overflow: hidden !important;
     }
 
-    /* CONTENITORE IMMAGINI FINALI (Anya_fine.gif, Premio.jpg) - ANGOLI ARROTONDATI */
+    /* CONTENITORE IMMAGINI FINALI - DIMENSIONI NATURALI CON ANGOLI ARROTONDATI */
     .win-images-container {
       display: flex;
       flex-direction: column;
@@ -285,12 +285,12 @@
     }
 
     .win-img-top, .win-img-bottom {
-      width: 80%;
-      max-width: 220px;
-      height: auto;
+      max-width: 240px;
       max-height: 160px;
-      object-fit: cover;
-      border-radius: 20px !important;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      border-radius: 18px !important;
       overflow: hidden !important;
       display: block;
     }
@@ -329,9 +329,9 @@
 
     <!-- ================= SCHERMATA 2: INTRO ================= -->
     <div id="screen-intro" class="screen">
-      <img src="Anya1.png" class="start-intro-img" alt="Anya 1">
+      <img src="Anya1.png" class="feedback-img" alt="Anya 1">
       <div class="intro-text-box">
-        Waku Waku! Aiuta Anya a rispondere correttamente a tutte le 10 domande per conquistare il premio finale!
+        Waku Waku! Aiuta Anya a rispondere correttamente a tutte le 10 domande per conquistarne il premio finale!
       </div>
       <button class="play-btn-fallback" style="font-size: 0.95rem; padding: 8px 24px;" onclick="startGame()">Via!</button>
     </div>
@@ -389,7 +389,6 @@
   <audio id="bg-music" src="Song.mp3" loop autoplay></audio>
 
   <script>
-    /* TUTTE LE IMMAGINI EVIDENZIATE IN VERDE */
     const questions = [
       { question: "Qual è il cibo preferito di Anya?", options: ["Carote", "Arachidi", "Cioccolato", "Torta"], correct: 1, image: "d0a517642140232317871409ae0ea77d.jpg" },
       { question: "Come si chiama il cane dei Forger?", options: ["Bond", "Max", "Peanut", "Loid"], correct: 0, image: "Dog.jpg" },
