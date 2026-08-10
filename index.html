@@ -246,7 +246,7 @@
       border-color: transparent #ffffff transparent transparent;
     }
 
-    /* PRIMA IMMAGINE INIZIALE (Anya Arachidi) - SENZA TAGLI E SENZA ANGOLI ARROTONDATI */
+    /* PRIMA IMMAGINE INIZIALE (Anya Arachidi) - NATURALE E SENZA TAGLI */
     .start-intro-img {
       width: 75%;
       max-width: 210px;
@@ -256,25 +256,24 @@
       margin: 10px auto;
       display: block;
       border-radius: 0 !important;
-      overflow: visible !important;
     }
 
-    /* IMMAGINI DI FEEDBACK (Risposta Corretta / Sbagliata) - DIMENSIONI ORIGINALI CON ANGOLI ARROTONDATI */
+    /* TUTTE LE IMMAGINI DELLE RISPOSTE ED EVIDENZIATE IN VERDE: ANGOLI ARROTONDATI MORBIDI */
     .feedback-img {
       width: 85%;
       max-width: 250px;
       height: auto;
       max-height: 220px;
-      object-fit: contain;
+      object-fit: cover;
       margin: 12px auto;
       display: block;
       background: transparent;
       border: none;
-      border-radius: 18px !important;
+      border-radius: 20px !important;
       overflow: hidden !important;
     }
 
-    /* CONTENITORE IMMAGINI FINALI - DIMENSIONI ORIGINALI CON ANGOLI ARROTONDATI */
+    /* CONTENITORE IMMAGINI FINALI (Anya_fine.gif, Premio.jpg) - ANGOLI ARROTONDATI */
     .win-images-container {
       display: flex;
       flex-direction: column;
@@ -285,24 +284,13 @@
       width: 100%;
     }
 
-    .win-img-top {
+    .win-img-top, .win-img-bottom {
       width: 80%;
       max-width: 220px;
       height: auto;
       max-height: 160px;
-      object-fit: contain;
-      border-radius: 18px !important;
-      overflow: hidden !important;
-      display: block;
-    }
-
-    .win-img-bottom {
-      width: 85%;
-      max-width: 240px;
-      height: auto;
-      max-height: 160px;
-      object-fit: contain;
-      border-radius: 18px !important;
+      object-fit: cover;
+      border-radius: 20px !important;
       overflow: hidden !important;
       display: block;
     }
@@ -341,7 +329,7 @@
 
     <!-- ================= SCHERMATA 2: INTRO ================= -->
     <div id="screen-intro" class="screen">
-      <img src="Anya1.png" class="start-intro-img" alt="Anya 1" onerror="this.src='anya_happy.png';">
+      <img src="Anya1.png" class="start-intro-img" alt="Anya 1">
       <div class="intro-text-box">
         Waku Waku! Aiuta Anya a rispondere correttamente a tutte le 10 domande per conquistare il premio finale!
       </div>
@@ -368,7 +356,7 @@
     <!-- ================= SCHERMATA 4: RISPOSTA CORRETTA ================= -->
     <div id="screen-correct" class="screen">
       <h3 style="color: #4caf50; font-size: 1.2rem;">Risposta Corretta!</h3>
-      <img id="correct-char-img" src="" class="feedback-img" alt="Personaggio" onerror="this.src='anya_happy.png';">
+      <img id="correct-char-img" src="" class="feedback-img" alt="Personaggio">
       
       <button id="next-btn" class="play-btn-fallback" style="font-size: 0.85rem; padding: 8px 20px; margin-top: 5px;" onclick="nextQuestion()">Prossima</button>
     </div>
@@ -387,8 +375,8 @@
       
       <!-- IMMAGINI SOVRAPPOSTE IN VERTICALE -->
       <div class="win-images-container">
-        <img src="Premio.jpg" class="win-img-top" alt="Pacchetto Arachidi" onerror="this.src='Arachide.png';">
-        <img src="Anya_fine.gif" class="win-img-bottom" alt="Anya Festeggia" onerror="this.style.display='none';">
+        <img src="Premio.jpg" class="win-img-top" alt="Pacchetto Arachidi">
+        <img src="Anya_fine.gif" class="win-img-bottom" alt="Anya Festeggia">
       </div>
 
       <p style="font-size: 1rem; font-weight: 800; color: #d97706; margin-top: 5px;">HAI VINTO IL PREMIO FINALE!</p>
@@ -401,6 +389,7 @@
   <audio id="bg-music" src="Song.mp3" loop autoplay></audio>
 
   <script>
+    /* TUTTE LE IMMAGINI EVIDENZIATE IN VERDE */
     const questions = [
       { question: "Qual è il cibo preferito di Anya?", options: ["Carote", "Arachidi", "Cioccolato", "Torta"], correct: 1, image: "d0a517642140232317871409ae0ea77d.jpg" },
       { question: "Come si chiama il cane dei Forger?", options: ["Bond", "Max", "Peanut", "Loid"], correct: 0, image: "Dog.jpg" },
@@ -413,8 +402,6 @@
       { question: "Cosa dice Anya quando è entusiasta?", options: ["Nani?!", "Waku Waku!", "Sugoi!", "Baka!"], correct: 1, image: "anya-wakuwaku.png" },
       { question: "Come chiama Anya suo padre?", options: ["Papà", "Chichi", "Loid", "Signore"], correct: 1, image: "Chichi.jpg" }
     ];
-
-    const defaultHappyImage = "Anya1.png";
 
     let currentQuestion = 0;
     let isMusicPlaying = false;
@@ -482,11 +469,10 @@
       const q = questions[currentQuestion];
       if(selectedIndex === q.correct) {
         const feedbackImg = document.getElementById('correct-char-img');
-        feedbackImg.src = q.image ? q.image : defaultHappyImage;
+        feedbackImg.src = q.image;
         
         const nextBtn = document.getElementById('next-btn');
 
-        /* CONTROLLO ULTIMA DOMANDA */
         if (currentQuestion === questions.length - 1) {
           nextBtn.textContent = "RITIRA IL PREMIO!";
         } else {
